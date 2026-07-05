@@ -1,0 +1,11 @@
+{
+  "name": "simply-sexy-cigars",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simply Sexy Cigars — luxury mobile cigar experiences. Static site with Vercel serverless inquiry API.",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "resend": "^4.0.0"
+  }
+}
