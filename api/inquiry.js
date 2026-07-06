@@ -47,61 +47,162 @@ const GOLD = '#C9A961';
 const BLACK = '#0A0A0B';
 const PAPER = '#EBE6D9';
 const ASH = '#8B8478';
+const IVORY = '#F5F1E8';
+const INK = '#1A1A1C';
+
+// Optional hosted logo for the header. Leave unset until a publicly reachable HTTPS
+// URL is available — when empty, the header falls back to styled text branding so no
+// broken image is ever shown. (Base64-embedded images are blocked by Outlook/Gmail.)
+const LOGO_URL = (process.env.INQUIRY_LOGO_URL || '').trim();
 
 function customerEmailHtml({ name, inquiryNumber, eventType, eventDate }) {
-  const rows = [];
-  rows.push(`<tr><td style="padding:6px 0;color:${ASH};font-size:11px;letter-spacing:3px;text-transform:uppercase;">Inquiry Number</td></tr>
-             <tr><td style="padding:0 0 18px;color:${GOLD};font-size:16px;letter-spacing:2px;">${esc(inquiryNumber)}</td></tr>`);
+  // Header branding: hosted logo image if a public URL is configured, otherwise
+  // elegant text wordmark (never a broken image). Text version mirrors the mockup:
+  // serif name with "SEXY" accented, flanked-rule "CONCIERGE" line beneath.
+  const brandmark = LOGO_URL
+    ? `<img src="${LOGO_URL}" width="210" alt="Simply Sexy Cigars" style="display:block;width:210px;max-width:68%;height:auto;border:0;outline:none;text-decoration:none;">`
+    : `<div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;letter-spacing:5px;color:${GOLD};">SIMPLY&nbsp;SEXY&nbsp;CIGARS</div>
+       <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:12px auto 0;">
+         <tr>
+           <td style="width:40px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td>
+           <td style="padding:0 14px;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:${GOLD};white-space:nowrap;">Concierge</td>
+           <td style="width:40px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td>
+         </tr>
+       </table>`;
+
+  // Inquiry stationery card — Inquiry Number always shown; Event Type / Date only when present.
+  const detailCells = [];
   if (eventType) {
-    rows.push(`<tr><td style="padding:6px 0;color:${ASH};font-size:11px;letter-spacing:3px;text-transform:uppercase;">Event</td></tr>
-               <tr><td style="padding:0 0 18px;color:${PAPER};font-size:15px;">${esc(eventType)}</td></tr>`);
+    detailCells.push(`<td width="50%" align="center" valign="top" style="padding:20px 16px;border-top:1px solid ${GOLD};${eventDate ? `border-right:1px solid ${GOLD};` : ''}">
+                        <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:${GOLD};padding-bottom:8px;">Event Type</div>
+                        <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;color:${INK};">${esc(eventType)}</div>
+                      </td>`);
   }
   if (eventDate) {
-    rows.push(`<tr><td style="padding:6px 0;color:${ASH};font-size:11px;letter-spacing:3px;text-transform:uppercase;">Date</td></tr>
-               <tr><td style="padding:0 0 18px;color:${PAPER};font-size:15px;">${esc(eventDate)}</td></tr>`);
+    detailCells.push(`<td width="50%" align="center" valign="top" style="padding:20px 16px;border-top:1px solid ${GOLD};">
+                        <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:${GOLD};padding-bottom:8px;">Event Date</div>
+                        <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;color:${INK};">${esc(eventDate)}</div>
+                      </td>`);
   }
+  const detailRow = detailCells.length
+    ? `<tr><td style="padding:0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>${detailCells.join('')}</tr></table></td></tr>`
+    : '';
 
   return `<!DOCTYPE html>
-<html>
-<body style="margin:0;padding:0;background-color:${BLACK};">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BLACK};">
-    <tr><td align="center" style="padding:48px 24px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Your Simply Sexy Cigars Inquiry</title>
+</head>
+<body style="margin:0;padding:0;background-color:${BLACK};-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+  <span style="display:none;font-size:1px;color:${BLACK};max-height:0;max-width:0;opacity:0;overflow:hidden;">Your inquiry has been received — a concierge specialist will be in touch shortly.</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${BLACK};">
+    <tr><td align="center" style="padding:24px 12px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
 
-        <tr><td align="center" style="padding-bottom:36px;">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:26px;letter-spacing:4px;color:${PAPER};">SIMPLY <span style="color:${GOLD};font-style:italic;">SEXY</span> CIGARS</div>
-          <div style="height:1px;width:64px;background-color:${GOLD};opacity:0.5;margin:20px auto 0;"></div>
+        <!-- HEADER (black) -->
+        <tr><td align="center" style="background-color:${BLACK};padding:38px 24px 30px;">
+          ${brandmark}
         </td></tr>
 
-        <tr><td style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:22px;line-height:1.5;color:${PAPER};text-align:center;padding-bottom:32px;">
-          Your inquiry has been received.
+        <!-- FRAMED BODY: thin gold frame wrapping the ivory content -->
+        <tr><td style="background-color:${BLACK};padding:0 20px 24px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ${GOLD};background-color:${IVORY};">
+            <tr><td style="padding:46px 40px 42px;">
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:25px;line-height:1.35;color:${INK};padding-bottom:18px;">
+                  Your Simply Sexy Cigars<br>Inquiry Has Been Received
+                </td></tr>
+                <tr><td align="center" style="padding-bottom:34px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
+                    <tr>
+                      <td style="width:46px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td>
+                      <td style="padding:0 10px;font-family:Georgia,serif;color:${GOLD};font-size:13px;line-height:1;">&#9670;</td>
+                      <td style="width:46px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td>
+                    </tr>
+                  </table>
+                </td></tr>
+              </table>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.85;color:#3A3A3C;padding-bottom:16px;">
+                  Dear <span style="color:${GOLD};">${esc(name)}</span>,
+                </td></tr>
+                <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.85;color:#3A3A3C;padding-bottom:16px;">
+                  Thank you for allowing Simply Sexy Cigars Concierge to be a part of your upcoming celebration.
+                </td></tr>
+                <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.85;color:#3A3A3C;padding-bottom:34px;">
+                  We have received the details of your inquiry, and one of our concierge specialists will be in touch with you shortly.
+                </td></tr>
+              </table>
+
+              <!-- Inquiry stationery card -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${IVORY};border:1px solid ${GOLD};">
+                <tr><td style="padding:30px 24px 26px;" align="center">
+                  <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:${GOLD};padding-bottom:12px;">Your Inquiry Number</div>
+                  <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;letter-spacing:2px;color:${INK};">${esc(inquiryNumber)}</div>
+                </td></tr>
+                ${detailRow}
+              </table>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.85;color:#3A3A3C;padding:34px 0 0;">
+                  In the meantime, should you have any additional details or questions, please don&#39;t hesitate to reach out.
+                </td></tr>
+              </table>
+
+              <!-- Quote (dark ink on ivory, generous spacing) -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td align="center" style="padding:36px 0 24px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 24px;"><tr><td style="width:50px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                  <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;line-height:1.75;color:${INK};padding:0 16px;">
+                    &#8220;Luxury is not measured by what is purchased.<br>It is measured by what is remembered.&#8221;
+                  </div>
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:24px auto 0;"><tr><td style="width:50px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td></tr></table>
+                </td></tr>
+              </table>
+
+              <!-- Signature: understated styled script for "Lola" (no image, no flourish) -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.7;color:#3A3A3C;padding-top:16px;">
+                  Warm regards,
+                </td></tr>
+                <tr><td style="padding:6px 0 4px;">
+                  <span style="font-family:'Snell Roundhand','Apple Chancery','Segoe Script',Georgia,serif;font-style:italic;font-size:34px;line-height:1;color:${INK};">Lola</span>
+                </td></tr>
+                <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${GOLD};padding-top:6px;">
+                  Simply Sexy Cigars Concierge
+                </td></tr>
+              </table>
+
+            </td></tr>
+          </table>
         </td></tr>
 
-        <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.8;color:${PAPER};padding-bottom:28px;">
-          Dear ${esc(name)},<br><br>
-          Thank you for considering Simply Sexy Cigars for your celebration. Your inquiry is in hand, and Lola will personally review your event details and be in touch shortly to begin the conversation.
-        </td></tr>
-
-        <tr><td style="border-top:1px solid rgba(201,169,97,0.25);border-bottom:1px solid rgba(201,169,97,0.25);padding:24px 0;">
-          <table role="presentation" cellpadding="0" cellspacing="0" style="font-family:Helvetica,Arial,sans-serif;">${rows.join('')}</table>
-        </td></tr>
-
-        <tr><td align="center" style="padding:40px 20px;">
-          <div style="height:1px;width:48px;background-color:${GOLD};opacity:0.5;margin:0 auto 24px;"></div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;line-height:1.6;color:${PAPER};">
-            Luxury is not measured by what is purchased.<br>It is measured by what is remembered.
-          </div>
-        </td></tr>
-
-        <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.8;color:${PAPER};padding-bottom:36px;">
-          If any detail of your event changes, or if you simply wish to talk it through, reply to this email and it will reach Lola directly.<br><br>
-          Warm regards,<br>
-          <span style="color:${GOLD};">The Simply Sexy Cigars Concierge</span>
-        </td></tr>
-
-        <tr><td align="center" style="border-top:1px solid rgba(201,169,97,0.2);padding-top:28px;">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:${GOLD};">Experience First. Cigars Always.</div>
-          <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;color:${ASH};margin-top:14px;">SERVING NORTHERN CALIFORNIA</div>
+        <!-- FOOTER (black): three balanced gold-symbol contact items -->
+        <tr><td align="center" style="background-color:${BLACK};padding:8px 24px 34px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 20px;"><tr><td style="width:50px;height:1px;background-color:${GOLD};font-size:0;line-height:0;">&nbsp;</td></tr></table>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
+            <tr>
+              <td align="center" width="180" style="padding:0 6px;font-family:Helvetica,Arial,sans-serif;">
+                <div style="color:${GOLD};font-size:16px;line-height:1.4;">&#9993;</div>
+                <a href="mailto:lola@simplysexycigars.com" style="color:${PAPER};text-decoration:none;font-size:12px;">lola@simplysexycigars.com</a>
+              </td>
+              <td align="center" width="150" style="padding:0 6px;font-family:Helvetica,Arial,sans-serif;">
+                <div style="color:${GOLD};font-size:16px;line-height:1.4;">&#9788;</div>
+                <a href="https://simplysexycigars.com" style="color:${PAPER};text-decoration:none;font-size:12px;">simplysexycigars.com</a>
+              </td>
+              <td align="center" width="150" style="padding:0 6px;font-family:Helvetica,Arial,sans-serif;">
+                <div style="color:${GOLD};font-size:16px;line-height:1.4;">&#9673;</div>
+                <a href="https://www.instagram.com/simplysexycigars/" style="color:${PAPER};text-decoration:none;font-size:12px;">@simplysexycigars</a>
+              </td>
+            </tr>
+          </table>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:12px;color:${GOLD};padding-top:26px;">Experience First. Cigars Always.</div>
+          <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;color:${ASH};padding-top:10px;">SERVING NORTHERN CALIFORNIA</div>
         </td></tr>
 
       </table>
@@ -268,14 +369,14 @@ export default async function handler(req, res) {
 
     const emailJobs = [
       resend.emails.send({
-        from: `Simply Sexy Cigars <${process.env.INQUIRY_FROM_EMAIL}>`,
+        from: `Simply Sexy Cigars Concierge <${process.env.INQUIRY_FROM_EMAIL}>`,
         to: notificationRecipients,
         replyTo: data.email,
         subject: `🔥 New Inquiry #${inquiryNumber}`,
         html: internalEmailHtml(data, inquiryNumber, submittedAt),
       }),
       resend.emails.send({
-        from: `Simply Sexy Cigars <${process.env.INQUIRY_FROM_EMAIL}>`,
+        from: `Simply Sexy Cigars Concierge <${process.env.INQUIRY_FROM_EMAIL}>`,
         to: data.email,
         replyTo: process.env.INQUIRY_REPLY_TO_EMAIL,
         subject: 'Your Simply Sexy Cigars Inquiry Has Been Received',
