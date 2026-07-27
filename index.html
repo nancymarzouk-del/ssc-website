@@ -870,6 +870,35 @@ a { color: inherit; text-decoration: none; }
 .journal__card--link:hover .journal__cta span {
   transform: translateX(5px);
 }
+/* Autumn Journal — featured flagship + "Enter" link (additive) */
+.journal__card--feature {
+  grid-column: 1 / -1;
+  align-items: center;
+  text-align: center;
+}
+.journal__card--feature .journal__category { margin-bottom: 1.1rem; }
+.journal__card--feature .journal__title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+}
+.journal__card--feature .journal__preview {
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.journal__enter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+.journal__enter span { display: inline-block; transition: transform 0.5s var(--ease-out); }
+.journal__enter:hover span { transform: translateX(5px); }
 @media (max-width: 900px) {
   .journal__grid { grid-template-columns: 1fr; }
 }
@@ -1363,7 +1392,7 @@ a { color: inherit; text-decoration: none; }
     <a href="#top" class="nav__link">Home</a>
     <a href="#about" class="nav__link">Experience</a>
     <a href="#gallery" class="nav__link">Gallery</a>
-    <a href="#journal" class="nav__link">The Journal</a>
+    <a href="journal.html" class="nav__link">The Journal</a>
     <a href="#membership" class="nav__link">Members <span class="nav__soon">Coming Soon</span></a>
     <a href="#booking" class="nav__link">Contact</a>
   </div>
@@ -1378,7 +1407,7 @@ a { color: inherit; text-decoration: none; }
     <a href="#top" class="mobile-menu__link">Home</a>
     <a href="#about" class="mobile-menu__link">Experience</a>
     <a href="#gallery" class="mobile-menu__link">Gallery</a>
-    <a href="#journal" class="mobile-menu__link">The Journal</a>
+    <a href="journal.html" class="mobile-menu__link">The Journal</a>
     <a href="#membership" class="mobile-menu__link">Members <span>Coming Soon</span></a>
     <a href="#booking" class="mobile-menu__link">Contact</a>
     <a href="#booking" class="mobile-menu__cta">Book Your Experience</a>
@@ -1619,41 +1648,51 @@ a { color: inherit; text-decoration: none; }
 <section class="journal" id="journal">
   <div class="journal__inner">
     <div class="journal__header">
-      <div class="eyebrow reveal">Editorial</div>
-      <h2 class="display display--l reveal">The <em>Journal.</em></h2>
+      <div class="eyebrow reveal">The Journal</div>
+      <h2 class="display display--l reveal"><em>Autumn.</em></h2>
       <p class="journal__intro reveal">
-        Stories, pairings, event notes, and behind-the-scenes moments from the Simply Sexy Cigars experience.
+        The Journal is our seasonal publication — a few considered stories for the season of gathering. This autumn: the ritual of the evening, the art of the pairing, and the quiet craft behind a night no one wants to end.
       </p>
+      <a href="journal.html" class="journal__enter reveal" aria-label="Enter The Journal">Enter The Journal <span>→</span></a>
     </div>
 
     <div class="journal__grid">
 
-      <a href="art-of-the-cigar-moment.html" class="journal__card journal__card--link reveal" aria-label="Read the feature: The Art of the Cigar Moment">
-        <div class="journal__category">The Ritual</div>
-        <h3 class="journal__title">The Art of the Cigar Moment</h3>
+      <a href="autumn-is-cigar-season.html" class="journal__card journal__card--link journal__card--feature reveal" aria-label="Read the featured story: Autumn Is Cigar Season">
+        <div class="journal__category">Featured · The Season</div>
+        <h3 class="journal__title">Autumn Is Cigar Season</h3>
         <p class="journal__preview">
-          Luxury is rarely remembered by what was purchased. It is remembered by the conversations that lingered, the laughter shared between old friends, the quiet toast beneath an open sky, and the feeling that, for just a little while, time slowed down. A cigar does not create those moments. It simply gives them permission to last a little longer.
+          When the light turns amber and the evenings draw in, the year asks us to gather — and to linger. The keynote of the season.
         </p>
         <div class="journal__cta">Read the Feature <span>→</span></div>
       </a>
 
-      <article class="journal__card reveal">
+      <a href="pairing-cigars-with-celebration.html" class="journal__card journal__card--link reveal" aria-label="Read: Pairing Cigars with Celebration">
         <div class="journal__category">Pairings</div>
         <h3 class="journal__title">Pairing Cigars with Celebration</h3>
         <p class="journal__preview">
-          From champagne toasts to single-barrel pours, a guide to matching the right cigar to the right occasion, and why the pairing tells the story.
+          The right pairing does not flatter the cigar. It tells the story of the occasion.
         </p>
-        <div class="journal__soon"><em>Coming Fall 2026</em></div>
-      </article>
+        <div class="journal__cta">Read <span>→</span></div>
+      </a>
 
-      <article class="journal__card reveal">
-        <div class="journal__category">Behind the Scenes</div>
-        <h3 class="journal__title">Behind the Cart: What Makes the Experience Feel Elevated</h3>
+      <a href="behind-the-cart.html" class="journal__card journal__card--link reveal" aria-label="Read: Behind the Cart">
+        <div class="journal__category">The Craft</div>
+        <h3 class="journal__title">Behind the Cart</h3>
         <p class="journal__preview">
-          The details guests never see. How each evening is prepared, staged, and served so that everything simply appears to happen on its own.
+          Everything a guest never sees is the reason the evening feels effortless.
         </p>
-        <div class="journal__soon"><em>Coming Fall 2026</em></div>
-      </article>
+        <div class="journal__cta">Read <span>→</span></div>
+      </a>
+
+      <a href="the-language-of-luxury.html" class="journal__card journal__card--link reveal" aria-label="Read: The Language of Luxury">
+        <div class="journal__category">The Ethos</div>
+        <h3 class="journal__title">The Language of Luxury</h3>
+        <p class="journal__preview">
+          True luxury is rarely loud. It is remembered in the details that felt effortless.
+        </p>
+        <div class="journal__cta">Read <span>→</span></div>
+      </a>
 
     </div>
   </div>
@@ -1789,7 +1828,7 @@ a { color: inherit; text-decoration: none; }
       <div class="footer__social">
         <h3>Follow the Experience</h3>
         <div class="footer__social-links">
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a href="https://www.instagram.com/simplysexycigars/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
           </a>
           <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">

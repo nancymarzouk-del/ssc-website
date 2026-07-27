@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  ============================================================================
+  THE JOURNAL — ARTICLE TEMPLATE
+  ----------------------------------------------------------------------------
+  To publish a new article:
+    1. Duplicate this file and rename it to a kebab-case slug, e.g.
+       pairing-cigars-with-celebration.html
+    2. Fill in every {{PLACEHOLDER}} below (title, meta, images, copy).
+    3. Delete any content blocks you don't need; duplicate the ones you do.
+    4. Add a matching card to the Journal grid in index.html (#journal)
+       and, optionally, to the "Related Stories" grid at the bottom here.
+
+  Do NOT edit journal.css to restyle one article — the stylesheet is shared
+  by every Journal page. Layout is driven entirely by the class names below.
+  ============================================================================
+-->
+<!-- Google tag (gtag.js) — site-wide analytics property. Keep as-is. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C1J9E4RVWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C1J9E4RVWH');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO — update both for every article -->
+<title>{{ARTICLE_TITLE}} | The Journal | Simply Sexy Cigars</title>
+<meta name="description" content="{{META_DESCRIPTION — one or two sentences, ~150 chars, describing the article for search engines and link previews.}}">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="journal.css">
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progress-bar"></div></div>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav" aria-label="Article navigation">
+  <a href="index.html" aria-label="Simply Sexy Cigars home">
+    <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" class="nav__logo" decoding="async">
+  </a>
+  <div class="nav__links">
+    <a href="index.html" class="nav__navlink">Home</a>
+    <a href="journal.html" class="nav__back">The Journal</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ HERO IMAGE ============ -->
+<!-- Use a descriptive alt. Keep fetchpriority="high" on the hero for LCP. -->
+<header class="a-hero">
+  <img src="images/{{HERO_IMAGE}}" alt="{{HERO_ALT — describe the image for screen readers}}" class="a-hero__img" fetchpriority="high" decoding="async">
+</header>
+
+<!-- ============ MASTHEAD ============ -->
+<section class="a-masthead">
+  <div class="eyebrow reveal">{{CATEGORY — e.g. The Ritual, Pairings, Behind the Cart}}</div>
+  <h1 class="a-title reveal">{{ARTICLE TITLE — wrap the emphasised words in <em></em>, use <br> for the line break}}</h1>
+  <p class="a-subtitle reveal">{{SUBTITLE — one evocative sentence}}</p>
+  <div class="a-meta reveal">
+    <span>{{SEASON / DATE — e.g. Summer 2026}}</span>
+    <span>{{READ TIME — e.g. 7 Minute Read}}</span>
+  </div>
+</section>
+
+<!-- ============ OPENING ============ -->
+<!-- The first paragraph uses .a-open for the larger lead style. -->
+<article class="a-body">
+  <p class="a-open reveal">{{OPENING PARAGRAPH — the lead. Sets the scene.}}</p>
+  <p class="reveal">{{Paragraph…}}</p>
+  <p class="reveal">{{Paragraph…}}</p>
+</article>
+
+<!-- ============ BODY SECTION ============ -->
+<!-- Repeat <article class="a-body"> blocks for standard prose sections. -->
+<article class="a-body">
+  <p class="reveal">{{Paragraph…}}</p>
+  <p class="reveal">{{Paragraph…}}</p>
+</article>
+
+<!-- ============ FULL-BLEED PHOTOGRAPH ============ -->
+<!-- Non-hero images: keep loading="lazy". Caption is optional. -->
+<figure class="a-media-full reveal">
+  <img src="images/{{IMAGE}}" alt="{{ALT}}" loading="lazy" decoding="async">
+  <figcaption class="a-caption">{{CAPTION}}</figcaption>
+</figure>
+
+<!-- ============ CHAPTER ============ -->
+<!-- A titled section. The optional <hr class="a-section-rule"> adds a divider
+     above the first chapter; drop it on later chapters (see original article). -->
+<article class="a-body a-chapter">
+  <hr class="a-section-rule">
+  <h2 class="a-chapter__title reveal">{{CHAPTER TITLE — wrap emphasised words in <em></em>}}</h2>
+  <p class="reveal">{{Paragraph…}}</p>
+  <p class="reveal">{{Paragraph…}}</p>
+</article>
+
+<!-- ============ PULL QUOTE ============ -->
+<aside class="a-quote reveal">
+  <blockquote>{{PULL QUOTE — use <br> for a deliberate line break}}</blockquote>
+</aside>
+
+<!-- ============ CLOSING ============ -->
+<!-- The final prose block uses .a-body--closing for centered, larger type. -->
+<article class="a-body a-body--closing">
+  <p class="reveal">{{Closing paragraph…}}</p>
+  <p class="reveal">{{Closing line…}}</p>
+</article>
+
+<!-- ============ SIGNATURE · THE MOMENT ============ -->
+<!-- Optional structured summary block. Add or remove rows as needed. -->
+<aside class="a-moment reveal" aria-label="The Moment">
+  <div class="a-moment__title">The Moment</div>
+  <dl class="a-moment__list">
+    <div class="a-moment__row"><dt>{{Label}}</dt><dd>{{Value}}</dd></div>
+    <div class="a-moment__row"><dt>{{Label}}</dt><dd>{{Value}}</dd></div>
+    <div class="a-moment__row"><dt>{{Label}}</dt><dd>{{Value}}</dd></div>
+    <div class="a-moment__row"><dt>{{Label}}</dt><dd>{{Value}}</dd></div>
+  </dl>
+</aside>
+
+</main>
+
+<!-- ============ RELATED STORIES ============ -->
+<!-- Duplicate .a-card blocks. Use "Coming …" for unpublished pieces, or wrap
+     the card in an <a href="slug.html"> for a published one. -->
+<section class="a-related">
+  <div class="a-related__inner">
+    <div class="a-related__header">
+      <div class="eyebrow reveal">Continue Reading</div>
+      <h2 class="reveal">Related <em>Stories.</em></h2>
+    </div>
+    <div class="a-related__grid">
+
+      <article class="a-card reveal">
+        <div class="a-card__cat">{{Category}}</div>
+        <h3 class="a-card__title">{{Related title}}</h3>
+        <p class="a-card__preview">{{Short preview…}}</p>
+        <div class="a-card__soon">{{Coming Fall 2026}}</div>
+      </article>
+
+      <article class="a-card reveal">
+        <div class="a-card__cat">{{Category}}</div>
+        <h3 class="a-card__title">{{Related title}}</h3>
+        <p class="a-card__preview">{{Short preview…}}</p>
+        <div class="a-card__soon">{{Coming Fall 2026}}</div>
+      </article>
+
+      <article class="a-card reveal">
+        <div class="a-card__cat">{{Category}}</div>
+        <h3 class="a-card__title">{{Related title}}</h3>
+        <p class="a-card__preview">{{Short preview…}}</p>
+        <div class="a-card__soon">{{Coming Winter 2026}}</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY NAVIGATION ============ -->
+<!-- Point prev/next at neighbouring article slugs once they exist; leave
+     aria-disabled="true" and href="#" for ends of the sequence. -->
+<nav class="a-storynav" aria-label="Story navigation">
+  <div class="a-storynav__inner">
+    <a href="#" class="a-storynav__prev" aria-disabled="true">Previous Story</a>
+    <a href="journal.html" class="a-storynav__home">Return to The Journal</a>
+    <a href="#" class="a-storynav__next" aria-disabled="true">Next Story</a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="a-footer">
+  <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" loading="lazy" decoding="async">
+  <p>© MMXXVI · Simply Sexy Cigars · <em>Experience first. Cigars always.</em></p>
+</footer>
+
+<script>
+/* Reveal on scroll */
+document.documentElement.classList.add('js');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+}
+
+/* Reading progress */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  bar.style.width = (scrolled * 100) + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
