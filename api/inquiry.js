@@ -197,7 +197,7 @@ function customerEmailHtml({ name, inquiryNumber, eventType, eventDate }) {
               </td>
               <td align="center" width="150" style="padding:0 6px;font-family:Helvetica,Arial,sans-serif;">
                 <div style="color:${GOLD};font-size:16px;line-height:1.4;">&#9673;</div>
-                <a href="https://www.instagram.com/simplysexycigars/" style="color:${PAPER};text-decoration:none;font-size:12px;">@simplysexycigars</a>
+                <a href="https://www.instagram.com/simplysexycigars/" target="_blank" rel="noopener noreferrer" style="color:${PAPER};text-decoration:none;font-size:12px;">@simplysexycigars</a>
               </td>
             </tr>
           </table>
