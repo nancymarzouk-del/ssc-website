@@ -33,7 +33,7 @@
   </a>
   <div class="nav__links">
     <a href="index.html" class="nav__navlink">Home</a>
-    <a href="index.html#journal" class="nav__back">The Journal</a>
+    <a href="journal.html" class="nav__back">The Journal</a>
   </div>
 </nav>
 
@@ -206,12 +206,17 @@
 
 <script>
 /* Reveal on scroll */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.documentElement.classList.add('js');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+}
 
 /* Reading progress */
 const bar = document.getElementById('progress-bar');

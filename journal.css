@@ -763,3 +763,11 @@ a { color: inherit; text-decoration: none; }
   .jx-order__item { grid-template-columns: auto 1fr; column-gap: 1.25rem; }
   .jx-order__arrow { display: none; }
 }
+
+/* ---- The Journal front door (journal.html) ---- */
+.jx-frontdoor {
+  margin-top: var(--nav-h);
+  text-align: center;
+  padding: clamp(4.5rem, 11vw, 8rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+}
+.jx-frontdoor .eyebrow { display: block; margin-bottom: 1.75rem; }
