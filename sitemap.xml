@@ -24,22 +24,4 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://simplysexycigars.com/autumn-is-cigar-season.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplysexycigars.com/behind-the-cart.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://simplysexycigars.com/the-language-of-luxury.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
 </urlset>

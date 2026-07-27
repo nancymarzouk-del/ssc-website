@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1J9E4RVWH"></script>
 <script>
@@ -9,7 +10,6 @@
   gtag('js', new Date());
   gtag('config', 'G-C1J9E4RVWH');
 </script>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
@@ -45,58 +45,134 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="journal.css">
+<link rel="stylesheet" href="site-header.css">
 </head>
 <body>
 
 <!-- ============ NAVIGATION ============ -->
-<nav class="nav" aria-label="The Journal navigation">
-  <a href="index.html" aria-label="Simply Sexy Cigars home">
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav__mark" aria-label="Simply Sexy Cigars">
     <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" class="nav__logo" decoding="async">
   </a>
   <div class="nav__links">
-    <a href="index.html" class="nav__navlink">Home</a>
-    <a href="index.html#booking" class="nav__navlink">Book Your Experience</a>
+    <a href="index.html#top" class="nav__link">Home</a>
+    <a href="index.html#about" class="nav__link">Experience</a>
+    <a href="index.html#gallery" class="nav__link">Gallery</a>
+    <a href="journal.html" class="nav__link is-active" aria-current="page">The Journal</a>
+    <a href="index.html#membership" class="nav__link">Members <span class="nav__soon">Coming Soon</span></a>
+    <a href="index.html#booking" class="nav__link">Contact</a>
   </div>
+  <a href="index.html#booking" class="nav__cta">Book Your Experience</a>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+    <a href="index.html#top" class="mobile-menu__link">Home</a>
+    <a href="index.html#about" class="mobile-menu__link">Experience</a>
+    <a href="index.html#gallery" class="mobile-menu__link">Gallery</a>
+    <a href="journal.html" class="mobile-menu__link is-active" aria-current="page">The Journal</a>
+    <a href="index.html#membership" class="mobile-menu__link">Members <span>Coming Soon</span></a>
+    <a href="index.html#booking" class="mobile-menu__link">Contact</a>
+    <a href="index.html#booking" class="mobile-menu__cta">Book Your Experience</a>
+  </nav>
+</div>
 
 <main>
 
-<!-- ============ FRONT DOOR MASTHEAD ============ -->
+<!-- ============ FRONT DOOR MASTHEAD + INTRODUCTION ============ -->
 <section class="jx-frontdoor">
   <div class="eyebrow reveal">Simply Sexy Cigars</div>
   <h1 class="a-title reveal">The <em>Journal.</em></h1>
   <p class="a-subtitle reveal">Seasonal issues and evergreen stories on the art of the unhurried evening.</p>
 </section>
 
-<!-- ============ THE AUTUMN EDITION ============ -->
-<section class="jx-featured reveal" aria-label="The Autumn Edition">
-  <a class="jx-featured__link" href="autumn.html" aria-label="Enter the Autumn Edition">
-    <div class="jx-featured__media"><img src="images/autumn-journal-hero.webp" alt="An open Simply Sexy Cigars humidor, whiskey, and a lit cigar on a terrace overlooking a vineyard at golden-hour sunset" fetchpriority="high" decoding="async"></div>
-    <div class="jx-featured__body">
-      <div class="jx-featured__cat">The Autumn Edition · Seasonal</div>
-      <h2 class="jx-featured__title">Autumn — A Season of <em>Gathering.</em></h2>
-      <p class="jx-featured__excerpt">When the light turns amber and the evenings draw in, the year asks us to gather — and to linger. Our inaugural seasonal issue.</p>
-      <span class="jx-cta">Enter the Edition <span>→</span></span>
+<!-- ============ EDITORIAL CAROUSEL (the navigation) ============ -->
+<section class="jx-shelf reveal" aria-label="The Journal collections">
+  <div class="jx-shelf__head">
+    <div class="jx-shelf__ctrl">
+      <button type="button" class="jx-shelf__arrow" data-dir="-1" aria-label="Scroll to previous collections" disabled>&lsaquo;</button>
+      <button type="button" class="jx-shelf__arrow" data-dir="1" aria-label="Scroll to more collections">&rsaquo;</button>
     </div>
-  </a>
-</section>
+  </div>
 
-<!-- ============ EVERGREEN · THE ART OF THE CIGAR MOMENT ============ -->
-<section class="jx-featured reveal" aria-label="The Art of the Cigar Moment">
-  <a class="jx-featured__link" href="art-of-the-cigar-moment.html" aria-label="Read the feature: The Art of the Cigar Moment">
-    <div class="jx-featured__media"><img src="images/1_graduation.webp" alt="A graduation cap, white coat and stethoscope beside a humidor, two cigars, champagne, and Porsche keys at golden hour" loading="lazy" decoding="async"></div>
-    <div class="jx-featured__body">
-      <div class="jx-featured__cat">Evergreen · The Ritual</div>
-      <h2 class="jx-featured__title">The Art of the <em>Cigar Moment.</em></h2>
-      <p class="jx-featured__excerpt">Luxury is rarely remembered by what was purchased. It is remembered by the conversations that lingered — and the feeling that, for a little while, time slowed down.</p>
-      <span class="jx-cta">Read the Feature <span>→</span></span>
-    </div>
-  </a>
-</section>
+  <div class="jx-shelf__track" role="region" aria-label="The Journal collections — scroll horizontally to browse" tabindex="0">
 
-<!-- ============ THE CLOSE ============ -->
-<section class="jx-close reveal">
-  <p>More seasons and stories are gathered here as they are published.</p>
+    <!-- Autumn · Published -->
+    <a class="jx-cc jx-cc--photo" href="autumn.html" aria-label="Open the Autumn publication">
+      <div class="jx-cc__media"><img src="images/autumn-journal-hero.webp" alt="An open humidor, whiskey and a lit cigar on a terrace overlooking a vineyard at golden-hour sunset" loading="lazy" decoding="async"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status jx-cc__status--live">Published</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">Autumn</h3>
+        <p class="jx-cc__sub">A Season of Gathering</p>
+      </div>
+    </a>
+
+    <!-- The Art of the Cigar Moment · Published -->
+    <a class="jx-cc jx-cc--photo" href="art-of-the-cigar-moment.html" aria-label="Open The Art of the Cigar Moment">
+      <div class="jx-cc__media"><img src="images/1_graduation.webp" alt="A graduation cap, white coat and stethoscope beside a humidor, two cigars, champagne and keys at golden hour" loading="lazy" decoding="async"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status jx-cc__status--live">Published</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">The Art of the Cigar Moment</h3>
+        <p class="jx-cc__sub">Evergreen Feature</p>
+      </div>
+    </a>
+
+    <!-- Winter · Upcoming -->
+    <article class="jx-cc jx-cc--teaser" style="--cc-accent:#7C93A6" aria-label="Winter — upcoming publication">
+      <div class="jx-cc__cover" aria-hidden="true"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status">Upcoming</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">Winter</h3>
+      </div>
+    </article>
+
+    <!-- Weddings · Upcoming -->
+    <article class="jx-cc jx-cc--teaser" style="--cc-accent:#CBA98F" aria-label="Weddings — upcoming publication">
+      <div class="jx-cc__cover" aria-hidden="true"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status">Upcoming</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">Weddings</h3>
+      </div>
+    </article>
+
+    <!-- Golf & Country Club · Upcoming -->
+    <article class="jx-cc jx-cc--teaser" style="--cc-accent:#5B6E4B" aria-label="Golf and Country Club — upcoming publication">
+      <div class="jx-cc__cover" aria-hidden="true"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status">Upcoming</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">Golf &amp; Country Club</h3>
+      </div>
+    </article>
+
+    <!-- Pairings · Upcoming -->
+    <article class="jx-cc jx-cc--teaser" style="--cc-accent:#B07A3C" aria-label="Pairings — upcoming publication">
+      <div class="jx-cc__cover" aria-hidden="true"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status">Upcoming</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">Pairings</h3>
+      </div>
+    </article>
+
+    <!-- Distillery Partnerships · Upcoming -->
+    <article class="jx-cc jx-cc--teaser" style="--cc-accent:#9A6B3F" aria-label="Distillery Partnerships — upcoming publication">
+      <div class="jx-cc__cover" aria-hidden="true"></div>
+      <div class="jx-cc__scrim" aria-hidden="true"></div>
+      <span class="jx-cc__status">Upcoming</span>
+      <div class="jx-cc__body">
+        <h3 class="jx-cc__title">Distillery Partnerships</h3>
+      </div>
+    </article>
+
+  </div>
 </section>
 
 </main>
@@ -120,7 +196,34 @@ if ('IntersectionObserver' in window) {
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
 }
+
+/* Editorial carousel — arrow controls + edge state (enhancement; native scroll/swipe works without JS) */
+(function () {
+  const track = document.querySelector('.jx-shelf__track');
+  const arrows = document.querySelectorAll('.jx-shelf__arrow');
+  if (!track || !arrows.length) return;
+  const step = () => {
+    const card = track.querySelector('.jx-cc');
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+    return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+  };
+  const sync = () => {
+    const max = track.scrollWidth - track.clientWidth - 1;
+    arrows.forEach(a => {
+      const back = a.dataset.dir === '-1';
+      a.disabled = back ? track.scrollLeft <= 1 : track.scrollLeft >= max;
+    });
+  };
+  arrows.forEach(a => a.addEventListener('click', () => {
+    track.scrollBy({ left: step() * Number(a.dataset.dir), behavior: 'smooth' });
+  }));
+  track.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+})();
 </script>
+
+<script src="site-header.js"></script>
 
 </body>
 </html>

@@ -21,21 +21,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="journal.css">
+<link rel="stylesheet" href="site-header.css">
 </head>
 <body>
 
 <div class="progress" aria-hidden="true"><div class="progress__bar" id="progress-bar"></div></div>
 
 <!-- ============ NAVIGATION ============ -->
-<nav class="nav" aria-label="Article navigation">
-  <a href="index.html" aria-label="Simply Sexy Cigars home">
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav__mark" aria-label="Simply Sexy Cigars">
     <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" class="nav__logo" decoding="async">
   </a>
   <div class="nav__links">
-    <a href="index.html" class="nav__navlink">Home</a>
-    <a href="journal.html" class="nav__back">The Journal</a>
+    <a href="index.html#top" class="nav__link">Home</a>
+    <a href="index.html#about" class="nav__link">Experience</a>
+    <a href="index.html#gallery" class="nav__link">Gallery</a>
+    <a href="journal.html" class="nav__link is-active" aria-current="page">The Journal</a>
+    <a href="index.html#membership" class="nav__link">Members <span class="nav__soon">Coming Soon</span></a>
+    <a href="index.html#booking" class="nav__link">Contact</a>
   </div>
+  <a href="index.html#booking" class="nav__cta">Book Your Experience</a>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+    <a href="index.html#top" class="mobile-menu__link">Home</a>
+    <a href="index.html#about" class="mobile-menu__link">Experience</a>
+    <a href="index.html#gallery" class="mobile-menu__link">Gallery</a>
+    <a href="journal.html" class="mobile-menu__link is-active" aria-current="page">The Journal</a>
+    <a href="index.html#membership" class="mobile-menu__link">Members <span>Coming Soon</span></a>
+    <a href="index.html#booking" class="mobile-menu__link">Contact</a>
+    <a href="index.html#booking" class="mobile-menu__cta">Book Your Experience</a>
+  </nav>
+</div>
 
 <main>
 
@@ -189,13 +210,9 @@
   </div>
 </section>
 
-<!-- ============ STORY NAVIGATION ============ -->
-<nav class="a-storynav" aria-label="Story navigation">
-  <div class="a-storynav__inner">
-    <a href="#" class="a-storynav__prev" aria-disabled="true">Previous Story</a>
-    <a href="index.html#journal" class="a-storynav__home">Return to The Journal</a>
-    <a href="#" class="a-storynav__next" aria-disabled="true">Next Story</a>
-  </div>
+<!-- ============ BACK TO THE JOURNAL ============ -->
+<nav class="jx-backlink" aria-label="Back to The Journal">
+  <a href="journal.html">Back to The Journal</a>
 </nav>
 
 <!-- ============ FOOTER ============ -->
@@ -226,6 +243,8 @@ window.addEventListener('scroll', () => {
   bar.style.width = (scrolled * 100) + '%';
 }, { passive: true });
 </script>
+
+<script src="site-header.js"></script>
 
 </body>
 </html>

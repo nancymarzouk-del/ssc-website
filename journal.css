@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ==========================================================================
    THE JOURNAL — shared editorial stylesheet
    --------------------------------------------------------------------------
@@ -22,7 +23,7 @@
   --gutter: clamp(1.5rem, 5vw, 5rem);
   --measure: 680px;      /* reading column */
   --wide: 1100px;        /* wide media */
-  --nav-h: 96px;
+  --nav-h: 110px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -61,37 +62,7 @@ a { color: inherit; text-decoration: none; }
   transition: width 0.1s linear;
 }
 
-/* ============ NAV (slim editorial variant) ============ */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 50;
-  height: var(--nav-h);
-  padding: 0 var(--gutter);
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(5, 5, 5, 0.97);
-  border-bottom: 1px solid var(--champagne-faint);
-}
-.nav__logo { height: 54px; width: auto; display: block; }
-.nav__links { display: flex; align-items: center; gap: 2.5rem; }
-.nav__navlink {
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--paper);
-  opacity: 0.7;
-  transition: opacity 0.4s ease, color 0.4s ease;
-}
-.nav__navlink:hover { opacity: 1; color: var(--champagne); }
-.nav__back {
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--champagne);
-  display: flex; align-items: center; gap: 0.75rem;
-  transition: gap 0.4s var(--ease-out);
-}
-.nav__back::before { content: '←'; letter-spacing: 0; font-size: 14px; }
-.nav__back:hover { gap: 1.1rem; }
+/* Global header lives in site-header.css (shared with the homepage). */
 
 /* ============ TYPE ============ */
 .eyebrow {
@@ -205,7 +176,7 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
 }
 .a-meta span::after {
-  content: '·';
+  content: '\00B7';
   margin-left: 1.5rem;
   color: var(--champagne-dim);
 }
@@ -508,8 +479,8 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; gap: 0.75rem;
 }
 .a-storynav a:hover { color: var(--champagne); }
-.a-storynav__prev::before { content: '←'; letter-spacing: 0; }
-.a-storynav__next::after  { content: '→'; letter-spacing: 0; }
+.a-storynav__prev::before { content: '\2190'; letter-spacing: 0; }
+.a-storynav__next::after  { content: '\2192'; letter-spacing: 0; }
 .a-storynav__home { color: var(--champagne); }
 @media (max-width: 640px) {
   .a-storynav__inner { flex-direction: column; }
@@ -576,10 +547,12 @@ a { color: inherit; text-decoration: none; }
 }
 /* ============ MOBILE ============ */
 @media (max-width: 640px) {
-  :root { --nav-h: 76px; }
-  .nav__logo { height: 44px; }
+  :root { --nav-h: 80px; }
   .a-hero { min-height: 52vh; }
   .a-media-full .ph { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 380px) {
+  :root { --nav-h: 70px; }
 }
 
 /* ==========================================================================
@@ -771,3 +744,135 @@ a { color: inherit; text-decoration: none; }
   padding: clamp(4.5rem, 11vw, 8rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
 }
 .jx-frontdoor .eyebrow { display: block; margin-bottom: 1.75rem; }
+
+/* ============ EDITORIAL CAROUSEL — The Journal collections ============ */
+.jx-shelf {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem) var(--gutter) clamp(4rem, 9vw, 7rem);
+}
+.jx-shelf__head {
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  gap: 1.5rem; margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+.jx-shelf__intro .eyebrow { display: block; margin-bottom: 1rem; }
+.jx-shelf__title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.05; letter-spacing: -0.02em;
+}
+.jx-shelf__title em { font-style: italic; color: var(--champagne); }
+
+.jx-shelf__ctrl { display: flex; gap: 0.75rem; flex: none; }
+.jx-shelf__arrow {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--champagne-dim);
+  background: transparent; color: var(--champagne);
+  font-family: var(--serif); font-size: 1.5rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .4s var(--ease-out), background .4s var(--ease-out),
+              color .4s var(--ease-out), opacity .4s var(--ease-out);
+}
+.jx-shelf__arrow:hover { border-color: var(--champagne); background: var(--champagne-faint); }
+.jx-shelf__arrow:disabled { opacity: 0.28; cursor: default; }
+.jx-shelf__arrow:focus-visible { outline: 2px solid var(--champagne); outline-offset: 3px; }
+
+/* Track — bleeds to the container edges, horizontal scroll + snap */
+.jx-shelf__track {
+  display: flex;
+  gap: clamp(1.1rem, 2.2vw, 1.75rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 0.5rem var(--gutter) 1.25rem;
+  scrollbar-width: none;
+}
+.jx-shelf__track::-webkit-scrollbar { display: none; }
+.jx-shelf__track:focus-visible { outline: 2px solid var(--champagne); outline-offset: 4px; }
+
+/* Cover card — a luxury magazine cover */
+.jx-cc {
+  position: relative; flex: 0 0 auto;
+  width: clamp(258px, 76vw, 320px);
+  aspect-ratio: 3 / 4.2;
+  scroll-snap-align: start;
+  border: 1px solid var(--champagne-faint);
+  border-radius: 2px; overflow: hidden;
+  text-decoration: none; color: inherit; display: block;
+  background: var(--smoke);
+  box-shadow: 0 18px 40px -24px rgba(0,0,0,0.85);
+  transition: transform .6s var(--ease-out), border-color .6s var(--ease-out), box-shadow .6s var(--ease-out);
+}
+a.jx-cc:hover {
+  transform: translateY(-6px);
+  border-color: var(--cc-accent, var(--champagne-dim));
+  box-shadow: 0 30px 60px -28px rgba(0,0,0,0.9);
+}
+a.jx-cc:focus-visible { outline: 2px solid var(--champagne); outline-offset: 4px; }
+
+.jx-cc__media { position: absolute; inset: 0; }
+.jx-cc__media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 1.8s var(--ease-out);
+}
+a.jx-cc:hover .jx-cc__media img { transform: scale(1.05); }
+
+/* Teaser cover — calm abstract editorial cover (no icons; typography carries it) */
+.jx-cc__cover {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 26%, color-mix(in srgb, var(--cc-accent) 18%, transparent), transparent 68%),
+    linear-gradient(158deg, #1b1b1f 0%, #101012 58%, #0A0A0B 100%);
+}
+.jx-cc__cover::after {
+  content: ''; position: absolute; inset: 15px;
+  border: 1px solid color-mix(in srgb, var(--cc-accent) 24%, transparent);
+}
+
+.jx-cc__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(6,6,7,0.94) 0%, rgba(6,6,7,0.55) 34%, rgba(6,6,7,0.05) 62%, transparent 100%);
+}
+
+.jx-cc__status {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--bone);
+  background: rgba(10,10,11,0.6); border: 1px solid var(--champagne-dim);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  padding: 0.5rem 0.7rem; border-radius: 999px;
+}
+.jx-cc__status--live { color: var(--onyx); background: var(--champagne); border-color: var(--champagne); }
+
+.jx-cc__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: clamp(1.25rem, 3vw, 1.6rem); }
+.jx-cc__body > :last-child { margin-bottom: 0; }
+.jx-cc__title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.6rem, 4.2vw, 2rem); line-height: 1.05; letter-spacing: -0.01em;
+  color: #FFFDF7; margin-bottom: 0.5rem;
+}
+.jx-cc__sub {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: clamp(0.98rem, 2.4vw, 1.08rem); line-height: 1.35; color: var(--paper); margin-bottom: 0.9rem;
+}
+.jx-cc--teaser { cursor: default; }
+
+@media (hover: none) {
+  .jx-shelf__ctrl { display: none; }   /* touch devices: swipe instead of arrows */
+}
+
+/* ============ BACK TO THE JOURNAL — publication footer link ============ */
+.jx-backlink {
+  text-align: center;
+  padding: clamp(3rem, 7vw, 5rem) var(--gutter) 0;
+}
+.jx-backlink a {
+  font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--champagne);
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  transition: gap 0.4s var(--ease-out);
+}
+.jx-backlink a::before { content: '\2190'; letter-spacing: 0; font-size: 14px; }
+.jx-backlink a:hover { gap: 1.1rem; }

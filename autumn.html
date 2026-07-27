@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1J9E4RVWH"></script>
 <script>
@@ -9,7 +10,6 @@
   gtag('js', new Date());
   gtag('config', 'G-C1J9E4RVWH');
 </script>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
@@ -20,7 +20,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Simply Sexy Cigars">
 <meta property="og:title" content="The Journal · Autumn | Simply Sexy Cigars">
 <meta property="og:description" content="A season of gathering — and the quiet hour every celebration seems to arrive at. The autumn issue of The Journal.">
@@ -45,19 +45,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="journal.css">
+<link rel="stylesheet" href="site-header.css">
 </head>
 <body>
 
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progress-bar"></div></div>
+
 <!-- ============ NAVIGATION ============ -->
-<nav class="nav" aria-label="The Autumn issue navigation">
-  <a href="index.html" aria-label="Simply Sexy Cigars home">
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav__mark" aria-label="Simply Sexy Cigars">
     <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" class="nav__logo" decoding="async">
   </a>
   <div class="nav__links">
-    <a href="index.html" class="nav__navlink">Home</a>
-    <a href="journal.html" class="nav__back">The Journal</a>
+    <a href="index.html#top" class="nav__link">Home</a>
+    <a href="index.html#about" class="nav__link">Experience</a>
+    <a href="index.html#gallery" class="nav__link">Gallery</a>
+    <a href="journal.html" class="nav__link is-active" aria-current="page">The Journal</a>
+    <a href="index.html#membership" class="nav__link">Members <span class="nav__soon">Coming Soon</span></a>
+    <a href="index.html#booking" class="nav__link">Contact</a>
   </div>
+  <a href="index.html#booking" class="nav__cta">Book Your Experience</a>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+    <a href="index.html#top" class="mobile-menu__link">Home</a>
+    <a href="index.html#about" class="mobile-menu__link">Experience</a>
+    <a href="index.html#gallery" class="mobile-menu__link">Gallery</a>
+    <a href="journal.html" class="mobile-menu__link is-active" aria-current="page">The Journal</a>
+    <a href="index.html#membership" class="mobile-menu__link">Members <span>Coming Soon</span></a>
+    <a href="index.html#booking" class="mobile-menu__link">Contact</a>
+    <a href="index.html#booking" class="mobile-menu__cta">Book Your Experience</a>
+  </nav>
+</div>
 
 <main>
 
@@ -84,64 +107,107 @@
 
 <hr class="jx-rule reveal" aria-hidden="true">
 
-<!-- ============ THE FEATURED STORY ============ -->
-<section class="jx-featured reveal" aria-label="Featured story">
-  <a class="jx-featured__link" href="autumn-is-cigar-season.html" aria-label="Read the featured story: Autumn Is Cigar Season">
-    <div class="jx-featured__media"><img src="images/autumn-full-width-03.webp" alt="Friends gathered around a fire pit at dusk in wine country, cigars and whiskey in hand" loading="lazy" decoding="async"></div>
-    <div class="jx-featured__body">
-      <div class="jx-featured__cat">Featured · The Season</div>
-      <h2 class="jx-featured__title">Autumn Is <em>Cigar Season.</em></h2>
-      <p class="jx-featured__excerpt">When the light turns amber and the evenings draw in, the year asks us to gather — and to linger.</p>
-      <span class="jx-cta">Read the Feature <span>→</span></span>
-    </div>
-  </a>
-</section>
+<!-- ============================================================= -->
+<!-- ============ THE FEATURE · AUTUMN IS CIGAR SEASON ============ -->
+<!-- The publication's lead story, read inline. The cover above opens
+     the story; no standalone hero is repeated here. -->
 
-<!-- ============ THE READING ORDER ============ -->
-<section class="jx-order" aria-label="The reading order">
-  <div class="jx-order__header reveal">
-    <div class="eyebrow">Continue Through the Season</div>
-    <h2>The Reading <em>Order.</em></h2>
-  </div>
-  <div class="jx-order__list">
-
-    <a class="jx-order__item reveal" href="autumn-is-cigar-season.html">
-      <div class="jx-order__num">I</div>
-      <div>
-        <div class="jx-order__cat">The Season</div>
-        <div class="jx-order__title">Autumn Is <em>Cigar Season.</em></div>
-        <p class="jx-order__preview">When the light turns amber and the evenings draw in, the year asks us to gather — and to linger.</p>
-      </div>
-      <div class="jx-order__arrow" aria-hidden="true">→</div>
-    </a>
-
-    <a class="jx-order__item reveal" href="behind-the-cart.html">
-      <div class="jx-order__num">II</div>
-      <div>
-        <div class="jx-order__cat">The Craft</div>
-        <div class="jx-order__title">Behind the <em>Cart.</em></div>
-        <p class="jx-order__preview">Everything a guest never sees is the reason the evening feels effortless.</p>
-      </div>
-      <div class="jx-order__arrow" aria-hidden="true">→</div>
-    </a>
-
-    <a class="jx-order__item reveal" href="the-language-of-luxury.html">
-      <div class="jx-order__num">III</div>
-      <div>
-        <div class="jx-order__cat">The Ethos</div>
-        <div class="jx-order__title">The Language of <em>Luxury.</em></div>
-        <p class="jx-order__preview">True luxury is rarely loud. It is remembered in the details that felt effortless.</p>
-      </div>
-      <div class="jx-order__arrow" aria-hidden="true">→</div>
-    </a>
-
+<!-- ============ MASTHEAD ============ -->
+<section class="a-masthead">
+  <div class="eyebrow reveal">The Season</div>
+  <h2 class="a-title reveal">Autumn Is<br><em>Cigar Season.</em></h2>
+  <p class="a-subtitle reveal">When the light turns amber and the evenings draw in, the year asks us to gather — and to linger.</p>
+  <div class="a-meta reveal">
+    <span>Autumn 2026</span>
+    <span>6 Minute Read</span>
   </div>
 </section>
 
-<!-- ============ THE CLOSE ============ -->
-<section class="jx-close reveal">
-  <p>The Journal returns with every turn of the season.</p>
-</section>
+<!-- ============ OPENING ============ -->
+<article class="a-body">
+  <p class="a-open reveal">You feel it before you see it. One evening the air turns — a coolness that was not there the week before, carrying woodsmoke from over the hills and the sweet, fermenting smell of the harvest coming in. The light lengthens and goes to amber. And somewhere in you, an old instinct stirs: to slow down, and to gather close.</p>
+  <p class="reveal">Autumn is the season that asks us to linger. Summer scatters us and keeps us moving; winter shuts the doors. Autumn draws the circle in. The evenings come earlier now, and we are slower to end them — reaching for a jacket, for a chair nearer the fire, for a reason to stay a little past the hour we meant to go.</p>
+  <p class="reveal">It is, quietly, the finest season of the year to light a cigar.</p>
+</article>
+
+<!-- ============ SECTION TWO ============ -->
+<article class="a-body">
+  <p class="reveal">There is a reason the ritual feels so at home now. A cigar cannot be hurried, and in autumn, neither can we. Its smoke — cedar, warm earth, a curl of sweetness — belongs to cool air the way it never quite belongs to the heat of summer. Struck against the first chill, a match sounds louder. The first draw tastes fuller. Everything slows to the pace the season is already keeping.</p>
+</article>
+
+<!-- ============ PHOTOGRAPH · THE TURN OF THE SEASON ============ -->
+<figure class="a-media-full reveal">
+  <img src="images/autumn-full-width-01.webp" alt="The first turning of the season into autumn" loading="lazy" decoding="async">
+  <figcaption class="a-caption">The year at its most beautiful change</figcaption>
+</figure>
+
+<!-- ============ CHAPTER · THE SEASON OF GATHERING ============ -->
+<article class="a-body a-chapter">
+  <hr class="a-section-rule">
+  <h2 class="a-chapter__title reveal">The Season of <em>Gathering.</em></h2>
+  <p class="reveal">The year saves its gatherings for these months. Weddings move indoors, and receptions run late. Families come home. Companies bring their people together one last time before the year turns. Milestones are marked — quietly or grandly — among the people who made them matter. Different rooms, different reasons, and beneath every one the same wish: to make the night last.</p>
+  <p class="reveal">Whatever the occasion, it arrives at the same hour. Not the planned one — not the toast, the first dance, the speeches — but the hour just after, when the schedule has run out and the evening could either end or deepen. No one plans that hour. It is the one everyone remembers.</p>
+</article>
+
+<!-- ============ PHOTOGRAPH · THE GATHERING ============ -->
+<figure class="a-media-full reveal">
+  <img src="images/autumn-full-width-02.webp" alt="A gathering lingering into the evening — the season of coming together" loading="lazy" decoding="async">
+  <figcaption class="a-caption">The hour no one wants to end</figcaption>
+</figure>
+
+<!-- ============ CHAPTER · WHY THE CIGAR BELONGS ============ -->
+<article class="a-body a-chapter">
+  <h2 class="a-chapter__title reveal">The Ritual of the <em>Hour.</em></h2>
+  <p class="reveal">That hour is where the cigar does its quiet work. It is not the centerpiece of the evening, and was never meant to be. It is what you turn to once the centerpiece has been cleared away — the reason two chairs are pulled together, and no one reaches for their keys.</p>
+  <p class="reveal">You know the evening. The fire has burned low. Someone has found a bottle worth opening, and the cork eases free with a low sigh. A murmur of voices, the last crickets of the year thinning in the cold, smoke rising slow and blue into the dark. No one is checking the time. This is the hour autumn was made for — and the cigar is how you keep it burning a little longer.</p>
+</article>
+
+<!-- ============ PULL QUOTE ============ -->
+<aside class="a-quote reveal">
+  <blockquote>Autumn is the season that asks us to stay.<br>A cigar is how we answer.</blockquote>
+</aside>
+
+<!-- ============ PHOTOGRAPH · THE RITUAL ============ -->
+<figure class="a-media-full reveal">
+  <img src="images/autumn-full-width-03.webp" alt="The quiet hour around the fire — conversation and connection late in the evening" loading="lazy" decoding="async">
+  <figcaption class="a-caption">Time suspended in a single draw</figcaption>
+</figure>
+
+<!-- ============ CHAPTER · THE INVITATION RETURNS ============ -->
+<article class="a-body a-chapter">
+  <h2 class="a-chapter__title reveal">The Invitation <em>Returns.</em></h2>
+  <p class="reveal">This is why the season returns each year like a promise. The leaves turn, the air cools, the harvest comes in — and with them returns the oldest luxury there is: time spent slowly, in good company, with nowhere else to be.</p>
+  <p class="reveal">Whatever your autumn holds this year, the season offers you what it offers everyone: a reason to slow down, a reason to gather, a reason to stay.</p>
+  <p class="reveal">That hour — the one that stays with you long after everything else has ended — is the only thing we have ever set out to make.</p>
+</article>
+
+<article class="a-body a-body--closing">
+  <p class="reveal">The first cool evening is coming. You will feel it before you see it — the turning air, the gold light, the old pull to gather close.</p>
+  <p class="reveal">When it arrives, do not hurry it.</p>
+  <p class="reveal">Let the evening keep you. You have nowhere else to be.</p>
+</article>
+
+<!-- ============ CLOSING PHOTOGRAPH ============ -->
+<figure class="a-media-full reveal">
+  <img src="images/autumn-closing.webp" alt="A couple's hands around a warm drink by candlelight and firelight, an engagement ring and a Cartier Love bracelet, autumn leaves nearby — the evening grown quiet" loading="lazy" decoding="async">
+  <figcaption class="a-caption">The evening, only quieter</figcaption>
+</figure>
+
+<!-- ============ SIGNATURE · THE MOMENT ============ -->
+<aside class="a-moment reveal" aria-label="The Moment">
+  <div class="a-moment__title">The Moment</div>
+  <dl class="a-moment__list">
+    <div class="a-moment__row"><dt>Occasion</dt><dd>Every Gathering of the Season</dd></div>
+    <div class="a-moment__row"><dt>Setting</dt><dd>Autumn, Wherever You Keep It</dd></div>
+    <div class="a-moment__row"><dt>Pairs Beautifully With</dt><dd>The First Cool Evening</dd></div>
+    <div class="a-moment__row"><dt>Lesson</dt><dd>The finest luxury the season offers is time, spent slowly, with nowhere else to be.</dd></div>
+  </dl>
+</aside>
+
+<!-- ============ BACK TO THE JOURNAL ============ -->
+<nav class="jx-backlink" aria-label="Back to The Journal">
+  <a href="journal.html">Back to The Journal</a>
+</nav>
 
 </main>
 
@@ -164,7 +230,17 @@ if ('IntersectionObserver' in window) {
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
 }
+
+/* Reading progress */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  bar.style.width = (scrolled * 100) + '%';
+}, { passive: true });
 </script>
+
+<script src="site-header.js"></script>
 
 </body>
 </html>
