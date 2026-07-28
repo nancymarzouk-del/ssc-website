@@ -8,7 +8,7 @@ The Journal is a **curated** publication, not a chronological blog. Volumes are 
 | Volume | Department | Title | Slug | Status |
 |---|---|---|---|---|
 | 01 | The Art of Celebration | Autumn — A Season of Gathering *(The Fall Issue)* | `autumn.html` | Published |
-| 02 | The Host's Guide | Beyond the Gift Basket — A Host's Guide to Client Appreciation | `client-appreciation-guide.html` | **Draft · In Preview** |
+| 02 | The Host's Guide | Beyond the Gift Basket — A Host's Guide to Client Appreciation | `client-appreciation-guide.html` | **Published** |
 | 03 | The Pairing Table | Bourbon & Maduro | *(to be assigned)* | Planned |
 
 ## Evergreen Cornerstones
