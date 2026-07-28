@@ -47,6 +47,19 @@
 <link rel="stylesheet" href="journal.css">
 <link rel="stylesheet" href="site-header.css">
 
+<style>
+/* Vol 02 · page-scoped only — tightens the closing sign-off rhythm
+   (Works Especially Well For -> supporting paragraph -> Host's Takeaway).
+   Does NOT touch journal.css or any other Journal page. Spacing only;
+   typography, type sizes, and line-heights are unchanged. */
+.hg-signoff { margin-top: clamp(2rem, 4vw, 3rem); }
+.hg-signoff .a-moment { margin-top: 0; }
+.hg-signoff .a-moment__title { margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); }
+.hg-signoff .a-body--closing { margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+.hg-signoff .a-quote { margin: clamp(1.5rem, 3vw, 2.25rem) auto 0; }
+.hg-signoff .a-quote::before { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -207,6 +220,9 @@
   </dl>
 </aside>
 
+<!-- ============ EDITORIAL SIGN-OFF (page-scoped tightened rhythm) ============ -->
+<div class="hg-signoff">
+
 <!-- ============ WORKS ESPECIALLY WELL FOR (sidebar) ============ -->
 <aside class="a-moment reveal" aria-label="Works especially well for">
   <div class="a-moment__title">Works Especially Well For</div>
@@ -230,6 +246,9 @@
   <blockquote>The most memorable events are never remembered because they were expensive. They are remembered because they gave people a reason to stay, to connect, and to leave with a story worth telling.</blockquote>
   <cite>Host's Takeaway &middot; The Host's Guide</cite>
 </aside>
+
+</div>
+<!-- /.hg-signoff -->
 
 </main>
 
