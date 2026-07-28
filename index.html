@@ -15,7 +15,7 @@
 <!-- Primary SEO -->
 <title>Simply Sexy Cigars | Luxury Mobile Cigar Experiences</title>
 <meta name="description" content="Luxury mobile cigar experiences for weddings, corporate events, golf tournaments, luxury automotive events, wineries, country clubs, and private celebrations throughout Northern California.">
-<link rel="canonical" href="https://simplysexycigars.com/">
+<link rel="canonical" href="https://www.simplysexycigars.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -24,8 +24,8 @@
 <meta property="og:site_name" content="Simply Sexy Cigars">
 <meta property="og:title" content="Simply Sexy Cigars | Luxury Mobile Cigar Experiences">
 <meta property="og:description" content="Luxury mobile cigar experiences for weddings, corporate events, golf tournaments, automotive celebrations & private parties across Northern California.">
-<meta property="og:url" content="https://simplysexycigars.com/">
-<meta property="og:image" content="https://simplysexycigars.com/images/porshe_dealership_purchase.png">
+<meta property="og:url" content="https://www.simplysexycigars.com/">
+<meta property="og:image" content="https://www.simplysexycigars.com/images/porshe_dealership_purchase.png">
 <meta property="og:image:width" content="1536">
 <meta property="og:image:height" content="1024">
 <meta property="og:image:alt" content="A new Porsche owner lights a celebration cigar beside the Simply Sexy Cigars mobile humidor at a dealership delivery event">
@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Simply Sexy Cigars | Luxury Mobile Cigar Experiences">
 <meta name="twitter:description" content="Luxury mobile cigar experiences for weddings, corporate events, golf tournaments, automotive celebrations & private parties across Northern California.">
-<meta name="twitter:image" content="https://simplysexycigars.com/images/porshe_dealership_purchase.png">
+<meta name="twitter:image" content="https://www.simplysexycigars.com/images/porshe_dealership_purchase.png">
 <meta name="twitter:image:alt" content="A new Porsche owner lights a celebration cigar beside the Simply Sexy Cigars mobile humidor at a dealership delivery event">
 
 <!-- Favicons & App Icons -->
@@ -50,28 +50,83 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Simply Sexy Cigars",
-  "url": "https://simplysexycigars.com/",
-  "logo": "https://simplysexycigars.com/images/Simply_Sexy_Cigars_Logo.png",
-  "image": "https://simplysexycigars.com/images/porshe_dealership_purchase.png",
-  "description": "Simply Sexy Cigars is a luxury mobile cigar experience company serving weddings, corporate events, golf tournaments, luxury automotive celebrations, and private parties throughout Northern California. Every event package includes one premium cigar per guest, personally presented by Simply Sexy Cigars Brand Ambassadors.",
-  "email": "lola@simplysexycigars.com",
-  "telephone": "+1-000-000-0000",
-  "priceRange": "$$$",
-  "areaServed": [
-    {"@type": "Place", "name": "San Francisco"},
-    {"@type": "Place", "name": "East Bay"},
-    {"@type": "Place", "name": "Peninsula"},
-    {"@type": "Place", "name": "Silicon Valley"},
-    {"@type": "Place", "name": "Napa Valley"},
-    {"@type": "Place", "name": "Sonoma County"},
-    {"@type": "Place", "name": "Sacramento"},
-    {"@type": "Place", "name": "Chico"},
-    {"@type": "Place", "name": "Northern California"}
-  ],
-  "knowsAbout": ["Luxury Cigar Service", "Event Planning", "Luxury Hospitality", "Wedding Services", "Corporate Events", "Golf Tournament Hospitality"],
-  "sameAs": []
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.simplysexycigars.com/#organization",
+      "name": "Simply Sexy Cigars",
+      "url": "https://www.simplysexycigars.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.simplysexycigars.com/images/Simply_Sexy_Cigars_Logo.png"
+      },
+      "sameAs": [
+        "https://www.instagram.com/simplysexycigars/"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.simplysexycigars.com/#localbusiness",
+      "name": "Simply Sexy Cigars",
+      "url": "https://www.simplysexycigars.com/",
+      "image": "https://www.simplysexycigars.com/images/porshe_dealership_purchase.png",
+      "description": "Simply Sexy Cigars is a luxury mobile cigar experience company serving weddings, corporate events, golf tournaments, luxury automotive celebrations, and private parties throughout Northern California. Every event package includes one premium cigar per guest, personally presented by Simply Sexy Cigars Brand Ambassadors.",
+      "email": "lola@simplysexycigars.com",
+      "priceRange": "$$$",
+      "parentOrganization": {
+        "@id": "https://www.simplysexycigars.com/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "San Francisco"
+        },
+        {
+          "@type": "Place",
+          "name": "East Bay"
+        },
+        {
+          "@type": "Place",
+          "name": "Peninsula"
+        },
+        {
+          "@type": "Place",
+          "name": "Silicon Valley"
+        },
+        {
+          "@type": "Place",
+          "name": "Napa Valley"
+        },
+        {
+          "@type": "Place",
+          "name": "Sonoma County"
+        },
+        {
+          "@type": "Place",
+          "name": "Sacramento"
+        },
+        {
+          "@type": "Place",
+          "name": "Chico"
+        },
+        {
+          "@type": "Place",
+          "name": "Northern California"
+        }
+      ],
+      "knowsAbout": [
+        "Luxury Cigar Service",
+        "Event Planning",
+        "Luxury Hospitality",
+        "Wedding Services",
+        "Corporate Events",
+        "Golf Tournament Hospitality"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/simplysexycigars/"
+      ]
+    }
+  ]
 }
 </script>
 
