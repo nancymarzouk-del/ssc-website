@@ -8,7 +8,7 @@ The Journal is a **curated** publication, not a chronological blog. Volumes are 
 | Volume | Department | Title | Slug | Status |
 |---|---|---|---|---|
 | 01 | The Art of Celebration | Autumn — A Season of Gathering *(The Fall Issue)* | `autumn.html` | Published |
-| 02 | The Host's Guide | The Hour That Isn't on the Agenda | `the-hour-off-the-agenda.html` | **Draft · In Preview** |
+| 02 | The Host's Guide | Beyond the Gift Basket — A Host's Guide to Client Appreciation | `client-appreciation-guide.html` | **Draft · In Preview** |
 | 03 | The Pairing Table | Bourbon & Maduro | *(to be assigned)* | Planned |
 
 ## Evergreen Cornerstones
@@ -40,4 +40,4 @@ The Journal is a **curated** publication, not a chronological blog. Volumes are 
 The Host's Guide · The Pairing Table · Cigar Academy · The Art of Celebration · Celebration Files · Behind the Cart
 
 ---
-*Volume 02 working title in planning was "Client Appreciation That People Actually Remember"; refined to the editorial headline above. Revert on request.*
+*Volume 02 was revised from an essay to a practical Host's Guide (editorial direction). Headline "Beyond the Gift Basket"; slug renamed `the-hour-off-the-agenda` → `client-appreciation-guide` for keyword alignment (client appreciation / corporate hospitality). Original working title: "Client Appreciation That People Actually Remember."*
