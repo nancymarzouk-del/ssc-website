@@ -58,14 +58,31 @@ This piece is the inaugural feature for the already-planned **Weddings** publica
 </url>
 ```
 
-**Activation checklist (when wedding photography is ready):**
-1. Produce dedicated, non-reused photography for the seven `.ph` frames + a hero and a `…-hero.webp`/`.jpg` for the card, og:image, and schema image.
-2. Replace the `.ph` placeholders in `why-cigar-lounge-wedding.html` with responsive, lazy-loaded WebP `<img>` (keep `fetchpriority="high"` on the hero).
-3. Flip the page `robots` meta from `noindex, follow` → `index, follow, max-image-preview:large`.
-4. Swap the `Weddings · Upcoming` teaser in `journal.html` for the staged Published card above.
-5. Add the staged `<loc>` to `sitemap.xml`; bump `journal.html` `lastmod`.
-6. Add reciprocal Related links from live pages where sensible (e.g. `autumn.html`, `client-appreciation-guide.html`) — do **not** edit the locked `art-of-the-cigar-moment.html`.
-7. Move this row from *Drafts Held for Photography* to a numbered Weddings publication entry; verify the card → article → 200 and the live sitemap.
+**Publication checklist — Weddings (`why-cigar-lounge-wedding.html`).** Run top to bottom when the dedicated wedding photography is ready; the piece is not published until every box is checked. Report *incomplete* if any step fails (never claim success on a partial publish).
+
+*Photography*
+- [ ] Produce dedicated, non-reused wedding photography for all seven `.ph` frames (see the art-direction brief in each frame's `.ph__note`).
+- [ ] Produce the hero + a card/social image and export as WebP (`images/why-cigar-lounge-wedding-hero.webp`) plus a `.jpg` fallback for og:image/schema.
+- [ ] **Replace the placeholders with final WebP images** — swap every `.ph` block in `why-cigar-lounge-wedding.html` for a responsive, lazy-loaded `<img>` (keep `fetchpriority="high"` on the hero; `loading="lazy"` on the rest; descriptive `alt`).
+
+*Metadata & indexing*
+- [ ] **Remove `noindex` and restore `index, follow`** — flip the page `robots` meta to `index, follow, max-image-preview:large` (and delete the "HELD FOR PHOTOGRAPHY" comment).
+- [ ] **Update the Open Graph image** — point `og:image` (and `twitter:image`) at the final hosted hero image; confirm `og:image:alt` still describes it.
+- [ ] **Update the Article schema image** — set the JSON-LD `Article.image` to the same final hosted URL; confirm it returns 200 (not a placeholder path).
+
+*Journal integration*
+- [ ] **Promote the Weddings carousel card from Upcoming → Published** — replace the `Weddings · Upcoming` teaser `<article>` in `journal.html` with the staged Published card above.
+- [ ] **Add the sitemap.xml entry** — insert the staged `<loc>` block; set its `lastmod` to the publish date and bump `journal.html`'s `lastmod`.
+- [ ] Add reciprocal Related links from live pages where sensible (e.g. `autumn.html`, `client-appreciation-guide.html`) — do **not** edit the locked `art-of-the-cigar-moment.html`.
+- [ ] Move this row from *Drafts Held for Photography* to a numbered Weddings publication entry in the tables above.
+
+*Verification & release*
+- [ ] **Verify internal links** — every link in the article resolves to a live page (Journal, Autumn, Beyond the Gift Basket, The Art of the Cigar Moment, Contact) and the prev/next/home nav works.
+- [ ] **Deploy** — push `main` to Production (Vercel).
+- [ ] **Submit the URL in Google Search Console** — request indexing for `https://www.simplysexycigars.com/why-cigar-lounge-wedding.html` and confirm the live sitemap entry is picked up.
+- [ ] **Verify reachability from the homepage** — Home → The Journal → Weddings carousel card → article returns 200 (no orphan page).
+- [ ] **Run Lighthouse** — confirm Performance / Accessibility / Best Practices / SEO hold to the site's existing scores; check LCP on the new hero image.
+- [ ] **Confirm no broken links** — article, images, card, og:image, and schema image all return 200; nothing still points at a `…-hero.jpg`/`.ph` placeholder.
 
 ## Status legend
 - **Planned** — commissioned, not yet written.
