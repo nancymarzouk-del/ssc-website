@@ -47,21 +47,21 @@ It governs **strategy, sequence, and publishing law**. It does not touch *voice*
 
 | Metric | Value |
 |---|---|
-| **Published Features** | **3** — Beyond the Gift Basket *(Corporate)* · The Art of the Cigar Moment *(Luxury Entertaining · locked)* · The Autumn Edition *(Seasonal)* |
-| **Held Features** | **1** — Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding *(Weddings)* |
+| **Published Features** | **4** — Beyond the Gift Basket *(Corporate)* · The Art of the Cigar Moment *(Luxury Entertaining · locked)* · The Autumn Edition *(Seasonal)* · Why a Cigar Lounge… Wedding *(Weddings · Vol 03)* |
+| **Held Features** | **0** — *(the Weddings Feature is now Published, Vol 03)* |
 | **Held Companions** | 4 — An Autumn Wedding · The Language of Luxury · Behind the Cart · Pairing Cigars with Celebration |
-| **Active collections** | **5** — Corporate, Luxury Entertaining, Seasonal *(Seeded)* · Weddings, Pairings *(Commissioned)* |
+| **Active collections** | **5** — Corporate, Luxury Entertaining, Seasonal, **Weddings** *(Seeded)* · Pairings *(Commissioned)* |
 | **Not-yet-started collections** | **3** — Cigar Education · Golf & Country Clubs · Charity & Philanthropy |
 | **Reserved future collections** | **8** *(§8 — do not populate)* |
-| **Next Feature to publish** | **Why a Cigar Lounge… Wedding** *(Weddings)* — written, Held; awaiting photography *(Priority Zero)* |
+| **Next Feature to publish** | — *(no Feature held; the four held **Companions** await their own photography — §11 Priority Zero)* |
 | **Next Feature to write** | **A Beginner's Guide to Enjoying a Cigar** *(Cigar Education)* — Queue #1 |
-| **Highest-priority collection** | **Weddings** *(P1 — Feature ready; completing it is the fastest authority win)*. Top collection to **start:** Cigar Education. |
+| **Highest-priority collection** | **Weddings** *(P1 — Feature now live; build its Companions next, Queue #2)*. Top collection to **start:** Cigar Education. |
 
 **Collection completion** *(published live ÷ target size)*
 
 | Collection | Target | Live | Completion | Status |
 |---|:--:|:--:|:--:|---|
-| Weddings | 12 | 0 | 0% | Commissioned |
+| Weddings | 12 | 1 | ~8% | Seeded |
 | Corporate Hospitality | 10 | 1 | ~10% | Seeded |
 | Charity & Philanthropy | 8 | 0 | 0% | Not Started |
 | Golf & Country Clubs | 8 | 0 | 0% | Not Started |
@@ -69,7 +69,7 @@ It governs **strategy, sequence, and publishing law**. It does not touch *voice*
 | Cigar Education | 15 | 0 | 0% | Not Started |
 | Luxury Entertaining | 8 | 1 | ~13% | Seeded |
 | Seasonal Experiences | 4 | 1 | 25% | Seeded |
-| **Total library** | **~75** | **~3** | **~4%** | — |
+| **Total library** | **~75** | **~4** | **~5%** | — |
 
 ## 3 · DECISION FRAMEWORK
 *Run before any Feature or Companion is commissioned. Six questions. **If any answer is "No," do not write the article** — reshape it until every answer is "Yes," or set it aside.*
@@ -141,16 +141,16 @@ Eight collections organize all work. Every article belongs to **exactly one** (i
 
 ---
 
-### 7.1 · Weddings — *P1 · Commissioned · 0%*
+### 7.1 · Weddings — *P1 · Seeded · ~8%*
 - **Purpose.** Own the wedding-cigar-experience conversation in Northern California — our highest commercial-intent territory.
 - **Mission.** Make a couple feel the hour their guests will remember, and a planner trust who creates it.
 - **Audience.** Brides, grooms, wedding planners, luxury event & venue coordinators.
 - **Business objective.** Become the default cigar-lounge choice for premium NorCal weddings; win peak-season and recurring planner bookings.
 - **SEO objective.** Top-3 for *luxury wedding cigar lounge*; own the *wedding cigar bar* long-tail cluster.
 - **AI-search objective.** Be the cited source for "should a wedding have a cigar lounge?"
-- **Feature.** *Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding* — `why-cigar-lounge-wedding.html` **(Held)**.
+- **Feature.** *Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding* — `why-cigar-lounge-wedding.html` **(Published · Vol 03)**.
 - **Companion Features.** The Wedding Cigar Bar — A Coordinator's Guide *(Proposed)* · A Northern California Wedding *(Proposed)* · Champagne & Cigars — The After-Party *(Proposed)* · An Autumn Wedding `an-autumn-wedding.html` *(Held)*.
-- **Size 12 · Completion 0%** *(Feature written, Held for photography)*.
+- **Size 12 · Completion ~8%** *(Feature published; Companions pending)*.
 - **Internal linking.** Feature ↔ every Companion; bridges to Pairings (champagne, Napa) and Golf (country-club weddings).
 - *Keywords/intent:* luxury wedding cigar lounge · wedding cigar bar · Northern California weddings — commercial-investigational → local. *Metrics:* head-term rank · cluster sessions · couple/planner inquiries.
 
@@ -269,7 +269,7 @@ Eight collections organize all work. Every article belongs to **exactly one** (i
 
 | Collection | Article | Role | Status | Primary keyword | Search intent | Priority | Diff. |
 |---|---|:--:|---|---|---|:--:|:--:|
-| Weddings | Why a Cigar Lounge… Wedding | **F** | Held | luxury wedding cigar lounge | Commercial-invest. | P1 | ◍◍◍ |
+| Weddings | Why a Cigar Lounge… Wedding | **F** | Published | luxury wedding cigar lounge | Commercial-invest. | P1 | ◍◍◍ |
 | Weddings | The Wedding Cigar Bar — Coordinator's Guide | C | Proposed | wedding cigar bar | Commercial-invest. | P1 | ◍◍ |
 | Weddings | A Northern California Wedding | C | Proposed | Northern California weddings | Local-commercial | P1 | ◍◍ |
 | Weddings | Champagne & Cigars — The After-Party | C | Proposed | champagne and cigars | Informational | P2 | ◍◍ |
@@ -382,7 +382,7 @@ Eight collections organize all work. Every article belongs to **exactly one** (i
 | 24 | The Charity Golf Tournament | Charity × Golf · C | charity golf tournament ideas | 6 | 7 | 7 | 6 | ◍◍ | Q2 2028 |
 | 25 | The Product Launch | Corporate · C | product launch event ideas | 6 | 7 | 6 | 6 | ◍◍ | Q2 2028 |
 
-**Priority Zero — before any new commission.** Five held pieces need only photography to publish: `why-cigar-lounge-wedding.html` *(Weddings Feature)*, `an-autumn-wedding.html`, `the-language-of-luxury.html`, `behind-the-cart.html`, `pairing-cigars-with-celebration.html` — **Q3–Q4 2026.** They ship faster than new work and immediately seed four collections.
+**Priority Zero — before any new commission.** The Weddings Feature is now **published** (Vol 03). Four held **Companions** still need only photography to publish: `an-autumn-wedding.html`, `the-language-of-luxury.html`, `behind-the-cart.html`, `pairing-cigars-with-celebration.html` — they ship faster than new work and deepen three collections.
 
 **Sequencing logic.** The order follows the gaps of highest value: first the **Cigar Education Feature** (the largest evergreen + AI opening and the connective tissue for every collection), then **completing Weddings** around its ready Feature, then establishing the **Local hub** and the **Golf Feature**, then deepening Corporate, Pairings, and Charity. Seasonal pieces and season-spiked commissions (Winter Edition, Corporate Holiday Party, gifting) are **calendar-anchored and may jump the queue** to hit their season. Recompute after each quarterly review.
 
@@ -536,7 +536,7 @@ Answer engines synthesize and cite. To be cited, a page must be structured, info
 | Future Companion Features unlocked | |
 
 ### Published records
-*Held pieces are not recorded here until they go live. Next record to add: **Why a Cigar Lounge… Wedding** (Weddings), on its activation from Held → Published.*
+*Held pieces are not recorded here until they go live. Next record to add: the first Weddings Companion (**The Wedding Cigar Bar**) or the **Cigar Education** Feature, on publication.*
 
 **R1 · Beyond the Gift Basket** — `client-appreciation-guide.html`
 
@@ -595,22 +595,42 @@ Answer engines synthesize and cite. To be cited, a page must be structured, info
 | CTA destination | None in-story *(Edition style)* — returns to The Journal |
 | Future Companion Features unlocked | The Winter Edition · The Spring Edition · The Summer Edition; bridge → Weddings (An Autumn Wedding) |
 
+**R4 · Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding** — `why-cigar-lounge-wedding.html`
+
+| Field | Value |
+|---|---|
+| Publication date | 2026-08-01 *(Vol 03; integrated & verified locally, deploy pending)* |
+| Collection | Weddings *(Feature / pillar)* |
+| Primary keyword | luxury wedding cigar lounge |
+| Search intent | Commercial-investigational · emotional: belonging / memory |
+| Business objective | Become the default cigar-lounge choice for premium NorCal weddings; win couple & planner inquiries |
+| Internal links added | → Autumn Is Cigar Season · → Beyond the Gift Basket *(reciprocal)* · → The Art of the Cigar Moment · prev / next / Return to The Journal; two staged "Planned · Weddings" Companion cards |
+| Companion Features connected | None live yet *(The Wedding Cigar Bar & A Northern California Wedding staged as Planned cards)* |
+| Google indexing date | — *(pending deploy + GSC submission)* |
+| Google ranking progress | — *(pending)* |
+| Organic traffic | — *(pending)* |
+| AI referrals | — *(pending)* |
+| Average engagement time | — *(pending)* |
+| CTA destination | `index.html#booking` — "begin the conversation" |
+| Future Companion Features unlocked | The Wedding Cigar Bar — A Coordinator's Guide · A Northern California Wedding · Champagne & Cigars — The After-Party · An Autumn Wedding |
+
 ### Editorial learning roll-up
 *Synthesis across the records, refreshed at each quarterly review (§18). Honest reads only — most await data.*
 
 | Question | Current read *(Aug 2026)* |
 |---|---|
-| Which collections perform best? | Too early — 3 Features live, metrics pending. Set a baseline at the first quarterly review. |
+| Which collections perform best? | Too early — 4 Features live, metrics pending. Set a baseline at the first quarterly review. |
 | Which search intents generate the most traffic? | Pending. Watch informational (Seasonal; Education to come) vs. commercial-investigational (Corporate; Weddings). |
 | Which Features generate inquiries? | Pending. *Beyond the Gift Basket* is the first with a booking CTA to attribute against. |
 | Which Companion Features to commission next? | Per the Queue (§11): the Education Feature, then the Weddings Companions — revisit once early data shows what readers pursue. |
 | Where are topical gaps emerging? | Structural gaps are known (§11 sequencing); *demand* gaps await search data. |
-| Which collections are Authoritative? | None yet — all Seeded or earlier. First to watch: Weddings (on activation) and Corporate. |
+| Which collections are Authoritative? | None yet — all Seeded or earlier. First to watch: Weddings (now live · Seeded) and Corporate. |
 | Which Features deserve a refresh or expansion? | None yet — all are recent. Reassess the Autumn Edition before its next season. |
 
 ---
 
 ### Change log
+- **2026-08-01 · publish maintenance** — Weddings Feature published (Vol 03). Per the Living-Document Protocol (§17): dashboard (§2) Published Features 3→4, Held Features 1→0, Weddings Seeded ~8%; §7.1, Content Map (§9), and Priority Zero (§11) updated; Editorial Intelligence record **R4** added (§19). No structural change.
 - **v1.0** *(approved · 1 Aug 2026)* — Operational pass. Added **Executive Summary** (§1), **Current State Dashboard** (§2), and **Decision Framework** (§3). Consolidated: folded the standalone Completion-Targets table into the dashboard; merged Content Scoring + The Next 25 into a single **Commissioning Queue** (§11); folded Content Gap Analysis into its sequencing note. Trimmed repeated statements (anti-cannibalization stated once; "collections rank, orphans don't" kept to Principle 1). Added the **Editorial Intelligence** ledger (§19) — the living historical record, seeded with the three published Features. Renumbered to 19 sections across seven parts.
 - **v0.3** — Editor-in-Chief pass: Editorial Principles; adopted **Feature** / **Companion Features** terminology; full Collection Standard per collection.
 - **v0.2** — Elevated to governing document: Competitive Differentiation, Search Intent Matrix, Collection Ownership, Publication Standards, Content Scoring, Completion Targets, Reserved Collections, Living-Document Protocol.

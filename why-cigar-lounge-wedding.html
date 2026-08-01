@@ -16,10 +16,7 @@
 <title>Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding | Simply Sexy Cigars</title>
 <meta name="description" content="A luxury wedding cigar lounge becomes the place guests gather, linger, and remember — a feature on why a cigar bar belongs at an elegant wedding reception.">
 <link rel="canonical" href="https://www.simplysexycigars.com/why-cigar-lounge-wedding.html">
-<!-- HELD FOR PHOTOGRAPHY: noindex, nofollow while unpublished — this page is not part
-     of the live Journal until dedicated wedding photography replaces the placeholders
-     below. At publish, flip to "index, follow, max-image-preview:large". -->
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -29,7 +26,10 @@
 <meta property="og:description" content="Champagne in hand, café lights overhead — why a cigar lounge becomes the hour of a wedding that guests remember longest. A feature from The Journal.">
 <meta property="og:url" content="https://www.simplysexycigars.com/why-cigar-lounge-wedding.html">
 <meta property="og:image" content="https://www.simplysexycigars.com/images/why-cigar-lounge-wedding-hero.jpg">
-<meta property="og:image:alt" content="Wedding guests gathered around a candlelit cigar lounge at golden hour, champagne and premium cigars on the table">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A bride and groom walk hand in hand toward a grand estate at golden hour on their wedding day">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter / X -->
@@ -49,6 +49,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="journal.css">
 <link rel="stylesheet" href="site-header.css">
+
+<style>
+/* Weddings Feature — page-scoped photography art direction.
+   Each photograph is presented at its own strongest crop rather than one shared
+   21:9 block, so the layout reads like a magazine and no face or storytelling
+   element is cropped. Copy, typography, and spacing are unchanged.
+
+   • Hero (estate arrival) — immersive full-bleed cover (shared .a-hero).
+   • Getting-ready frame — portrait 4:5, centered, width-limited (no crop).
+   • Landscape frames (steps, detail, vista, autumn, departure) — shown at their
+     native 16:9, full composition, overriding the shared 21:9/3:2 crops.
+   • Vista + departure — full-bleed for cinematic pacing (still 16:9, no crop).
+   • Place setting — a touch narrower for editorial rhythm. */
+
+/* Portrait getting-ready frame — natural 4:5, centered, uncropped. */
+.a-media-portrait { max-width: 760px; }
+.a-media-portrait img { aspect-ratio: 4 / 5; height: auto; }
+
+/* Landscape story frames — native 16:9, full composition, at every breakpoint.
+   height:auto lets aspect-ratio govern sizing while the width/height attributes
+   still reserve space (zero CLS) — without it the height attribute would win. */
+.a-media-full:not(.a-media-portrait) img { aspect-ratio: 16 / 9; height: auto; }
+
+/* Intimate detail (the place setting) — narrower for rhythm. */
+.wf-detail { max-width: 860px; }
+
+/* Cinematic full-bleed frames (the open-sky vista and the departure) —
+   edge to edge; native 16:9, so nothing is cropped. Uses no transform, so the
+   reveal-on-scroll animation is unaffected. */
+.wf-bleed { max-width: none; padding-left: 0; padding-right: 0; }
+.wf-bleed .a-caption { padding-left: var(--gutter); padding-right: var(--gutter); }
+</style>
 
 <script type="application/ld+json">
 {
@@ -130,12 +162,7 @@
 
 <!-- ============ HERO (Art Direction · Image 01 — PLACEHOLDER) ============ -->
 <header class="a-hero">
-  <div class="ph" style="width:100%">
-    <div class="ph__note">
-      <strong>Hero Photography &middot; Forthcoming</strong>
-      <span>Golden-hour wedding reception — the celebration at its warmest, guests beginning to drift toward a lounge at the garden's edge.</span>
-    </div>
-  </div>
+  <img src="images/weddings-01-hero-estate-arrival.webp" alt="A bride and groom walk hand in hand across a manicured lawn toward a grand stone estate at golden hour, wedding guests gathered on the terrace beyond" width="1672" height="941" class="a-hero__img" fetchpriority="high" decoding="async">
 </header>
 
 <!-- ============ MASTHEAD ============ -->
@@ -164,14 +191,9 @@
 </article>
 
 <!-- ============ PHOTOGRAPH (Art Direction · Image 02 — PLACEHOLDER) ============ -->
-<figure class="a-media-full reveal">
-  <div class="ph">
-    <div class="ph__note">
-      <strong>Photography &middot; Forthcoming</strong>
-      <span>A luxury cigar lounge under café lights after dark — leather seating, a dressed humidor, guests gathered in easy conversation.</span>
-    </div>
-  </div>
-  <figcaption class="a-caption">A room that assembles itself out of the evening</figcaption>
+<figure class="a-media-full a-media-portrait reveal">
+  <img src="images/weddings-02-gathering-place.webp" alt="Groom and groomsmen in black tuxedos gathering in a light-filled suite before the wedding, one adjusting the groom's bow tie beside polished shoes, cufflinks and a watch" width="1122" height="1402" loading="lazy" decoding="async">
+  <figcaption class="a-caption">The quiet hour before the day begins</figcaption>
 </figure>
 
 <!-- ============ 3 · CONVERSATION BECOMES THE ENTERTAINMENT ============ -->
@@ -195,12 +217,7 @@
 
 <!-- ============ PHOTOGRAPH (Art Direction · Image 03 — PLACEHOLDER) ============ -->
 <figure class="a-media-full reveal">
-  <div class="ph">
-    <div class="ph__note">
-      <strong>Photography &middot; Forthcoming</strong>
-      <span>Guests gathering naturally — a small circle of friends and family lingering by candlelight, mid-conversation, unposed.</span>
-    </div>
-  </div>
+  <img src="images/weddings-03-luxury-of-slowing-down.webp" alt="A bride and groom sit close on stone steps at blue hour among relaxed wedding guests, drinks and cigars in hand, string lights glowing over the estate" width="1672" height="941" loading="lazy" decoding="async">
   <figcaption class="a-caption">The one hour with nowhere to be</figcaption>
 </figure>
 
@@ -220,13 +237,8 @@
 </article>
 
 <!-- ============ PHOTOGRAPH (Art Direction · Image 04 — PLACEHOLDER) ============ -->
-<figure class="a-media-full reveal">
-  <div class="ph">
-    <div class="ph__note">
-      <strong>Photography &middot; Forthcoming</strong>
-      <span>Elegant detail — a luxury lighter and cutter resting on leather beside a single premium cigar, shot close in warm low light.</span>
-    </div>
-  </div>
+<figure class="a-media-full wf-detail reveal">
+  <img src="images/weddings-04-details-that-are-remembered.webp" alt="An elegant wedding place setting in warm daylight — a single cigar on a linen napkin beside a gold lighter and cutter, a champagne coupe and white roses" width="1672" height="941" loading="lazy" decoding="async">
   <figcaption class="a-caption">The small things memory keeps</figcaption>
 </figure>
 
@@ -238,13 +250,8 @@
 </article>
 
 <!-- ============ PHOTOGRAPH (Art Direction · Image 05 — PLACEHOLDER) ============ -->
-<figure class="a-media-full reveal">
-  <div class="ph">
-    <div class="ph__note">
-      <strong>Photography &middot; Forthcoming</strong>
-      <span>An outdoor estate reception at dusk — a cigar lounge set on a country-club terrace or garden lawn, string lights above, the celebration soft in the distance.</span>
-    </div>
-  </div>
+<figure class="a-media-full wf-bleed reveal">
+  <img src="images/weddings-05-under-an-open-sky.webp" alt="An open-air Northern California vineyard wedding reception at golden hour, long tables and a cigar lounge on the lawn with rolling vine-covered hills beyond" width="1672" height="941" loading="lazy" decoding="async">
   <figcaption class="a-caption">The far edge of the evening, given a reason to gather</figcaption>
 </figure>
 
@@ -257,12 +264,7 @@
 
 <!-- ============ PHOTOGRAPH (Art Direction · Image 06 — PLACEHOLDER) ============ -->
 <figure class="a-media-full reveal">
-  <div class="ph">
-    <div class="ph__note">
-      <strong>Photography &middot; Forthcoming</strong>
-      <span>An autumn vineyard wedding — golden light over turning vines, guests gathered at a candlelit lounge as the evening cools.</span>
-    </div>
-  </div>
+  <img src="images/weddings-06-autumn-evening.webp" alt="A bride and groom stand beneath an autumn tree in golden light, looking toward a café-lit reception among vineyards blanketed in fallen leaves" width="1672" height="941" loading="lazy" decoding="async">
   <figcaption class="a-caption">The season that asks us to linger</figcaption>
 </figure>
 
@@ -300,13 +302,8 @@
 </article>
 
 <!-- ============ CLOSING PHOTOGRAPH (Art Direction · Image 07 — PLACEHOLDER) ============ -->
-<figure class="a-media-full reveal">
-  <div class="ph">
-    <div class="ph__note">
-      <strong>Closing Photography &middot; Forthcoming</strong>
-      <span>Bride and groom walking past the cigar lounge at blue hour — the celebration winding down, the café lights still glowing behind them.</span>
-    </div>
-  </div>
+<figure class="a-media-full wf-bleed reveal">
+  <img src="images/weddings-07-final-departure-rolls-royce.webp" alt="A vintage ivory Rolls-Royce with a Just Married sign and trailing silver cans parked outside a candlelit estate at blue hour" width="1672" height="941" loading="lazy" decoding="async">
   <figcaption class="a-caption">The evening, only quieter</figcaption>
 </figure>
 
