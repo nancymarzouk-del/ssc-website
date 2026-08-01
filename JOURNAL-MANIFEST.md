@@ -84,6 +84,26 @@ This piece is the inaugural feature for the already-planned **Weddings** publica
 - [ ] **Run Lighthouse** — confirm Performance / Accessibility / Best Practices / SEO hold to the site's existing scores; check LCP on the new hero image.
 - [ ] **Confirm no broken links** — article, images, card, og:image, and schema image all return 200; nothing still points at a `…-hero.jpg`/`.ph` placeholder.
 
+### Weddings — content cluster & internal-linking plan (topical authority)
+*The Weddings collection is being built as a hub-and-spoke cluster around the primary keyword **luxury wedding cigar lounge**. `why-cigar-lounge-wedding.html` is the **pillar** (the emotional "why"). Each companion (spoke) owns a distinct sub-intent and keyword set, links **up** to the pillar with a descriptive anchor, and links **across** to its sibling; the pillar links **down** to each spoke. No spoke is linked live until it is itself published with its own photography.*
+
+| Role | Title | Slug | Owns (keywords) | Status |
+|---|---|---|---|---|
+| **Pillar** | Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding | `why-cigar-lounge-wedding.html` | luxury wedding cigar lounge; why guests gather; wedding after party (the hour) | Held — photography |
+| Spoke 1 | The Wedding Cigar Bar — A Coordinator's Guide | `wedding-cigar-bar-guide.html` | wedding cigar bar; wedding reception ideas; luxury wedding entertainment; mobile cigar lounge; timeline & etiquette | **Recommended · to write** |
+| Spoke 2 | A Northern California Wedding — The Open-Air Lounge | `northern-california-wedding-cigar-lounge.html` | Northern California weddings; Bay Area wedding entertainment; outdoor wedding reception; vineyard / estate / country-club terrace | **Recommended · to write** |
+
+**Why these two.** Together with the pillar they cover the topic's four faces without cannibalizing it — the pillar answers *why*, Spoke 1 answers *what/how* (the planner's practical guide, mirroring the proven *Host's Guide* format), and Spoke 2 answers *where* (local-SEO intent that a Northern California mobile service should own outright). A later third spoke could take *Champagne & Cigars — The Wedding After-Party* (champagne and cigars; wedding after party) once the first two are live.
+
+**Reciprocal link map (apply as each spoke is published — never link a held/unpublished page from a live one):**
+- Pillar → Spoke 1 & Spoke 2: the two "Planned · Weddings" cards already staged in the pillar's *Related Stories* become live `<a>` cards.
+- Spoke 1 → Pillar: descriptive in-body anchor, e.g. *"why the lounge becomes [the most memorable part of the night](why-cigar-lounge-wedding.html)."*
+- Spoke 2 → Pillar: in-body anchor from its outdoor/vineyard passage back to the pillar's *Under an Open Sky* theme.
+- Spoke 1 ↔ Spoke 2: reciprocal *Related Stories* cards.
+- All three carry `articleSection: "Weddings"` and the `Weddings` eyebrow so the cluster is unambiguous to readers and crawlers.
+
+**Collection front door.** While Weddings is a single-article publication, the `journal.html` Weddings carousel card (staged above) is its front door → the pillar. If the collection grows beyond ~3 features, consider promoting Weddings to a self-contained publication page (`weddings.html`, cover + inline stories, per the Autumn pattern) — a Publisher decision, not to be made unilaterally.
+
 ## Status legend
 - **Planned** — commissioned, not yet written.
 - **Draft** — written, in editorial review.
