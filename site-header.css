@@ -161,3 +161,41 @@
 @media (max-width: 380px) {
   .nav__logo { height: 42px; }
 }
+
+/* ==========================================================================
+   PRIMARY BUTTON — the single site-wide CTA component (.hero__cta)
+   Promoted VERBATIM from index.html so every page shares ONE button. This
+   stylesheet is linked on every page, so the component is available site-wide.
+   Uses the shared tokens each page declares in :root. Appearance, spacing,
+   typography, hover state, and animation are unchanged — this is an
+   architectural move, not a visual redesign. Wording may vary per page; the
+   design may not.
+   ========================================================================== */
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 2.5rem;
+  border: 1px solid var(--champagne);
+  color: var(--champagne);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  transition: background 0.5s var(--ease-out), color 0.5s var(--ease-out), gap 0.5s var(--ease-out);
+}
+.hero__cta::after {
+  content: '→';
+  letter-spacing: 0;
+  font-size: 14px;
+  transition: transform 0.5s var(--ease-out);
+}
+.hero__cta:hover {
+  background: var(--champagne);
+  color: var(--onyx);
+  gap: 1.75rem;
+}
+.hero__cta:hover::after { transform: translateX(4px); }
+@media (max-width: 480px) {
+  .hero__cta { width: 100%; justify-content: center; }
+}
