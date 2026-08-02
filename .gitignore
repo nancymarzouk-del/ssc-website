@@ -1,3 +1,8 @@
 .DS_Store
 **/.DS_Store
 .vercel
+
+# Private business strategy — never committed to the website repo or
+# deployed, so it can never become publicly accessible. Versioned
+# separately from the public site (see Strategy/README.md).
+/Strategy/

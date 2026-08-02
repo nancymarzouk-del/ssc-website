@@ -1,0 +1,4 @@
+# Belt-and-suspenders on top of .gitignore: never include the private
+# strategy folder in ANY Vercel deployment (Git-integrated or CLI).
+# Internal business strategy must never be served on the public site.
+Strategy/
