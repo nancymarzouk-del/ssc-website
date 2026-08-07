@@ -34,12 +34,13 @@
   0% { opacity: 0; transform: scale(0.92); }
   100% { opacity: 1; transform: scale(1); }
 }
-.nav__links { display: flex; gap: 3rem; }
+.nav__links { display: flex; gap: clamp(1.5rem, 3.3vw, 3rem); }
 .nav__link {
   font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--paper); opacity: 0.7;
   transition: opacity 0.3s ease, color 0.3s ease;
   position: relative;
+  white-space: nowrap;
 }
 .nav__link::after {
   content: ''; position: absolute; left: 0; right: 0; bottom: -6px;
@@ -58,6 +59,8 @@
   padding: 0.85rem 1.4rem;
   color: var(--champagne);
   transition: background 0.4s var(--ease-out), color 0.4s var(--ease-out);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .nav__cta:hover { background: var(--champagne); color: var(--onyx); }
 
@@ -150,7 +153,10 @@
 }
 .mobile-menu__cta:hover { background: var(--champagne); color: var(--onyx); }
 
-@media (max-width: 900px) {
+/* Desktop nav hands off to the hamburger while it still has comfortable spacing.
+   Empirically chosen: below ~1400px the CTA/links crowd (inter-group gap < ~26px);
+   1440px keeps the full 48px gap and balanced composition. */
+@media (max-width: 1400px) {
   .nav__toggle { display: flex; }
   .nav__cta { display: none; }
   .nav__links { display: none; }
