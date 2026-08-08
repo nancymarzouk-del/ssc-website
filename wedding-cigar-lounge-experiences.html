@@ -61,6 +61,14 @@
 /* Placeholder hero fills the shared .a-hero frame (journal.css) */
 .a-hero .ph { width: 100%; }
 
+/* Mobile hero crop — page-specific override of the shared .a-hero__img (journal.css).
+   On narrow widths the tall hero box crops horizontally; shift the focus left so the
+   bride and groom (left-of-center in this photo) both stay in frame. Desktop (>820px)
+   keeps the shared "center 45%". */
+@media (max-width: 820px) {
+  .a-hero__img { object-position: 30% 45%; }
+}
+
 /* Primary button (.hero__cta) is the shared site-wide component in site-header.css —
    inherited here, never redefined. */
 
