@@ -504,6 +504,13 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--serif); font-style: italic;
   text-transform: none; letter-spacing: 0.02em; color: var(--champagne);
 }
+.a-footer__legal {
+  margin-top: 0.95rem;
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+}
+.a-footer__legal a { color: var(--paper); }
+.a-footer__legal a:hover { color: var(--champagne); }
+.a-footer__legal span { color: var(--ash); padding: 0 0.5rem; }
 
 
 /* ============ MOBILE EDITORIAL REFINEMENT ============ */
