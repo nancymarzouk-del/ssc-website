@@ -13,8 +13,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
-<title>Simply Sexy Cigars | Luxury Mobile Cigar Experiences</title>
-<meta name="description" content="Luxury mobile cigar experiences for weddings, corporate events, golf tournaments, luxury automotive events, wineries, country clubs, and private celebrations throughout Northern California.">
+<title>Simply Sexy Cigars | Cigar Experiences for Northern California Events</title>
+<meta name="description" content="Simply Sexy Cigars creates attended cigar experiences for weddings, charitable events, corporate gatherings, golf tournaments, and private celebrations across Northern California.">
 <link rel="canonical" href="https://www.simplysexycigars.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -22,8 +22,8 @@
 <!-- Open Graph (Facebook, LinkedIn, iMessage, WhatsApp) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Simply Sexy Cigars">
-<meta property="og:title" content="Simply Sexy Cigars | Luxury Mobile Cigar Experiences">
-<meta property="og:description" content="Luxury mobile cigar experiences for weddings, corporate events, golf tournaments, automotive celebrations & private parties across Northern California.">
+<meta property="og:title" content="Simply Sexy Cigars | Cigar Experiences for Northern California Events">
+<meta property="og:description" content="Simply Sexy Cigars creates attended cigar experiences for weddings, charitable events, corporate gatherings, golf tournaments, and private celebrations across Northern California.">
 <meta property="og:url" content="https://www.simplysexycigars.com/">
 <meta property="og:image" content="https://www.simplysexycigars.com/images/porshe_dealership_purchase.png">
 <meta property="og:image:width" content="1536">
@@ -33,8 +33,8 @@
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Simply Sexy Cigars | Luxury Mobile Cigar Experiences">
-<meta name="twitter:description" content="Luxury mobile cigar experiences for weddings, corporate events, golf tournaments, automotive celebrations & private parties across Northern California.">
+<meta name="twitter:title" content="Simply Sexy Cigars | Cigar Experiences for Northern California Events">
+<meta name="twitter:description" content="Simply Sexy Cigars creates attended cigar experiences for weddings, charitable events, corporate gatherings, golf tournaments, and private celebrations across Northern California.">
 <meta name="twitter:image" content="https://www.simplysexycigars.com/images/porshe_dealership_purchase.png">
 <meta name="twitter:image:alt" content="A new Porsche owner lights a celebration cigar beside the Simply Sexy Cigars mobile humidor at a dealership delivery event">
 
@@ -70,7 +70,7 @@
       "name": "Simply Sexy Cigars",
       "url": "https://www.simplysexycigars.com/",
       "image": "https://www.simplysexycigars.com/images/porshe_dealership_purchase.png",
-      "description": "Simply Sexy Cigars is a luxury mobile cigar experience company serving weddings, corporate events, golf tournaments, luxury automotive celebrations, and private parties throughout Northern California. Every event package includes one premium cigar per guest, personally presented by Simply Sexy Cigars Brand Ambassadors.",
+      "description": "Simply Sexy Cigars provides attended cigar experiences for weddings, charitable events, corporate and client appreciation gatherings, golf tournaments, and private celebrations throughout Northern California. Every event includes one thoughtfully selected cigar per guest, personally presented by Simply Sexy Cigars Brand Ambassadors.",
       "email": "lola@simplysexycigars.com",
       "priceRange": "$$$",
       "parentOrganization": {
@@ -115,12 +115,14 @@
         }
       ],
       "knowsAbout": [
-        "Luxury Cigar Service",
+        "Attended Cigar Experiences",
         "Event Planning",
-        "Luxury Hospitality",
+        "Event Hospitality",
         "Wedding Services",
+        "Charitable Events",
         "Corporate Events",
-        "Golf Tournament Hospitality"
+        "Golf Tournament Hospitality",
+        "Private Celebrations"
       ],
       "sameAs": [
         "https://www.instagram.com/simplysexycigars/"
@@ -573,7 +575,11 @@ a { color: inherit; text-decoration: none; }
   .process__step:last-child { border-bottom: none; }
 }
 .process__feature {
-  max-width: var(--max);
+  /* Cart kept and represented, but scaled from a full-bleed 1440px banner to a
+     contained 1100px feature so the branded golf cart no longer dominates the
+     luxury-event positioning established by the Experiences cards above.
+     (Homepage defines --max but not --wide, so an explicit value is used.) */
+  max-width: 1100px;
   margin: clamp(4rem, 8vw, 6rem) auto 0;
   aspect-ratio: 21 / 9;
   overflow: hidden;
@@ -1255,6 +1261,50 @@ a { color: inherit; text-decoration: none; }
   .display--xl { font-size: clamp(2.6rem, 13vw, 3.5rem); }
   .hero__content { padding-bottom: clamp(2rem, 6vh, 4rem); }
 }
+
+/* ============================================================================
+   THE EXPERIENCES — occasion discovery mosaic (editorial, not a services grid).
+   Scoped to .experiences/.exp; reuses existing tokens; no shared-file changes.
+   Panels become clickable by swapping <article class="exp"> → <a class="exp">
+   with no visual redesign. Placeholders (.exp__ph) are a TEMPORARY dev treatment
+   swapped for <img> when the five-image collection is produced.
+   ============================================================================ */
+.experiences { background: var(--onyx); padding: var(--section-y) var(--gutter); }
+.experiences__header { max-width: 760px; margin: 0 auto clamp(3rem, 6vw, 5rem); text-align: center; }
+.experiences__intro { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.55; color: var(--paper); margin: 1.5rem auto 0; max-width: 46ch; }
+.experiences__mosaic { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); }
+.exp { position: relative; display: flex; flex-direction: column; color: inherit; text-decoration: none; }
+.exp--anchor { grid-column: 1 / -1; }
+.exp__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: var(--smoke); }
+.exp--anchor .exp__media { aspect-ratio: 16 / 9; }
+.exp__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease-out); }
+a.exp:hover .exp__media img { transform: scale(1.04); }
+/* TEMPORARY development placeholder — replace the .exp__ph div with an <img> at photo delivery */
+.exp__ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem;
+  background: radial-gradient(ellipse at 30% 25%, rgba(201,169,97,0.10), transparent 55%), linear-gradient(150deg, #1a1712, #0b0908);
+  border: 1px solid var(--champagne-faint); }
+.exp__ph::before, .exp__ph::after { content: ''; position: absolute; width: 16px; height: 16px; border: 1px solid var(--champagne-dim); }
+.exp__ph::before { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+.exp__ph::after { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+.exp__ph span { font-family: var(--sans); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--champagne); opacity: 0.7; }
+.exp__body { padding: 1.25rem 0.25rem 0; }
+.exp__label { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(1.35rem, 2.4vw, 1.9rem); color: var(--bone); line-height: 1.1; }
+.exp--anchor .exp__label { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+.exp__micro { display: block; font-family: var(--serif); font-style: italic; font-size: clamp(0.98rem, 1.6vw, 1.15rem); color: var(--ash); margin-top: 0.4rem; }
+.exp__cue { display: inline-block; margin-top: 0.9rem; font-family: var(--sans); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--champagne);
+  opacity: 0; transform: translateX(-6px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
+a.exp:hover .exp__cue, a.exp:focus-visible .exp__cue { opacity: 1; transform: none; }
+a.exp:focus-visible { outline: 2px solid var(--champagne); outline-offset: 4px; }
+.exp--quiet { cursor: default; }
+@media (max-width: 640px) {
+  .experiences__mosaic { grid-template-columns: 1fr; }
+  .exp--anchor { grid-column: auto; }
+  .exp--anchor .exp__media { aspect-ratio: 4 / 3; }
+  a.exp .exp__cue { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .exp__media img, .exp__cue { transition: none; }
+}
 </style>
 </head>
 <body>
@@ -1263,15 +1313,13 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ============ NAVIGATION ============ -->
 <nav class="nav" id="nav" aria-label="Main navigation">
-  <a href="#" class="nav__mark" aria-label="Simply Sexy Cigars">
+  <a href="#top" class="nav__mark" aria-label="Simply Sexy Cigars">
     <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" class="nav__logo" decoding="async">
   </a>
   <div class="nav__links">
     <a href="#top" class="nav__link">Home</a>
-    <a href="#about" class="nav__link">Experience</a>
-    <a href="#gallery" class="nav__link">Gallery</a>
+    <a href="#experiences" class="nav__link">Experience</a>
     <a href="journal.html" class="nav__link">The Journal</a>
-    <a href="#membership" class="nav__link">Members <span class="nav__soon">Coming Soon</span></a>
     <a href="#booking" class="nav__link">Contact</a>
   </div>
   <a href="#booking" class="nav__cta">Book Your Experience</a>
@@ -1283,10 +1331,8 @@ a { color: inherit; text-decoration: none; }
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <nav class="mobile-menu__nav" aria-label="Mobile navigation">
     <a href="#top" class="mobile-menu__link">Home</a>
-    <a href="#about" class="mobile-menu__link">Experience</a>
-    <a href="#gallery" class="mobile-menu__link">Gallery</a>
+    <a href="#experiences" class="mobile-menu__link">Experience</a>
     <a href="journal.html" class="mobile-menu__link">The Journal</a>
-    <a href="#membership" class="mobile-menu__link">Members <span>Coming Soon</span></a>
     <a href="#booking" class="mobile-menu__link">Contact</a>
     <a href="#booking" class="mobile-menu__cta">Book Your Experience</a>
   </nav>
@@ -1299,19 +1345,18 @@ a { color: inherit; text-decoration: none; }
 <!-- ============ 1 · HERO ============ -->
 <header class="hero">
   <div class="hero__video-frame">
-    <img src="images/your_spot_is_waiting.png" alt="The Simply Sexy Cigars signature cart with velvet lounge chairs and a lit cigar at a Northern California golf course at golden hour" class="hero__bg" fetchpriority="high" decoding="async">
+    <img src="images/your_spot_is_waiting.webp" alt="The Simply Sexy Cigars signature cart with velvet lounge chairs and a lit cigar at a Northern California golf course at golden hour" class="hero__bg" fetchpriority="high" decoding="async">
   </div>
 
   <div class="hero__content">
     <div class="eyebrow hero__eyebrow reveal">Experience First. Cigars Always.</div>
     <h1 class="display display--xl hero__display">
-      Luxury Experiences.<br>
-      Elevated by <em>Simply Sexy Cigars.</em>
+      In the business of celebration.
     </h1>
     <div class="hero__meta">
       <div>
         <p class="lede hero__meta-left reveal">
-          We bring premium cigar service to your event with style, sophistication, and unforgettable guest interaction.
+          Simply Sexy Cigars brings an attended cigar experience to events across Northern California, creating a place for guests to gather, connect, and enjoy the occasion.
         </p>
         <a href="#booking" class="hero__cta reveal">Book Your Experience</a>
       </div>
@@ -1329,16 +1374,16 @@ a { color: inherit; text-decoration: none; }
         A cigar for every guest.<br><em>Every time.</em>
       </h2>
       <p class="body-copy reveal">
-        Every package includes one carefully selected cigar per guest. During our planning consultation, we'll help you choose the collection that best fits your event, your guests, and your budget.
+        Every event starts with a simple promise: one thoughtfully selected cigar for every guest. Before the event, we work with you to choose a selection that fits the occasion, your guests, and the budget you have in mind.
       </p>
       <p class="body-copy reveal">
-        Our Simply Sexy Cigars Brand Ambassadors personally present each cigar, answer questions, and cut and light cigars upon request. The result is an experience that is welcoming, polished, and memorable.
+        Our ambassadors stay with the experience throughout the event, helping guests choose, cut, and light their cigar while making first-timers feel comfortable from the start.
       </p>
       <div class="philosophy__signature reveal">Proudly serving Northern California</div>
     </div>
     <div class="philosophy__image reveal">
       <div class="ph ph--4-5">
-        <img src="images/must_have_profile_side_cigar.png" alt="A guest in evening attire enjoys a hand-selected cigar at a private Simply Sexy Cigars event" loading="lazy">
+        <img src="images/must_have_profile_side_cigar.webp" alt="A guest in evening attire enjoys a hand-selected cigar at a private Simply Sexy Cigars event" loading="lazy">
       </div>
     </div>
   </div>
@@ -1346,12 +1391,72 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ============ 2B · EDITORIAL FEATURE · MILESTONE ============ -->
 <section class="feature-spread">
-  <img src="images/porshe_dealership_purchase.png" alt="A new Porsche owner lights a celebration cigar beside the Simply Sexy Cigars mobile humidor during a dealership delivery event in Northern California">
+  <img src="images/porshe_dealership_purchase.webp" alt="A new Porsche owner lights a celebration cigar beside the Simply Sexy Cigars mobile humidor during a dealership delivery event in Northern California">
   <div class="feature-spread__content">
     <h2 class="feature-spread__headline reveal">Every milestone deserves a signature moment.</h2>
     <p class="feature-spread__copy reveal">
       The keys are handed over. The champagne is poured. And then, something guests don't expect: a moment made just for them. This is how a delivery becomes a memory, and how a celebration becomes a story told for years.
     </p>
+  </div>
+</section>
+
+<!-- ============ 2C · THE EXPERIENCES · occasion discovery ============ -->
+<section class="experiences" id="experiences" aria-labelledby="experiences-heading">
+  <div class="experiences__header">
+    <div class="eyebrow reveal">The Experiences</div>
+    <h2 id="experiences-heading" class="display display--l reveal">The experience they didn't see coming.</h2>
+    <p class="experiences__intro reveal">An attended cigar experience designed to become part of the occasion, whether it's a wedding, fundraiser, corporate gathering, golf tournament, or private celebration.</p>
+  </div>
+  <div class="experiences__mosaic reveal">
+
+    <!-- Weddings · dedicated Experience page exists → linked -->
+    <a class="exp exp--anchor" href="wedding-cigar-lounge-experiences.html">
+      <div class="exp__media"><img src="images/wedding-lounge-hero.webp" alt="A bride and groom pause hand in hand at dusk before their glowing wine-country estate reception" width="1672" height="941" loading="lazy" style="object-position:40% 45%"></div>
+      <div class="exp__body">
+        <span class="exp__label">Weddings</span>
+        <span class="exp__micro">An unexpected final chapter to the celebration.</span>
+        <span class="exp__cue">Explore the experience &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Charitable Events → the dedicated Charitable Events page. Published in this same
+         release (noindex removed + added to sitemap.xml), so this card is safe to ship. -->
+    <a class="exp" href="charitable-events-cigar-experiences.html">
+      <div class="exp__media"><img src="images/charitable-events-cigar-experience-hero.webp" alt="An attendant hands a cigar across a candlelit table at an outdoor black-tie charity gala" width="1536" height="1024" loading="lazy" style="object-position:55% 50%"></div>
+      <div class="exp__body">
+        <span class="exp__label">Charitable Events</span>
+        <span class="exp__micro">A detail guests gather around and remember.</span>
+        <span class="exp__cue">Explore the experience &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Corporate & Client Appreciation · no dedicated page yet → intentional non-clickable -->
+    <article class="exp exp--quiet">
+      <div class="exp__media"><img src="images/corporate-client-appreciation-experience.webp" alt="Guests in business attire gather around a candlelit cigar table at an upscale corporate appreciation reception at dusk, a modern estate lit behind them" width="1536" height="1024" loading="lazy" style="object-position:50% 45%"></div>
+      <div class="exp__body">
+        <span class="exp__label">Corporate &amp; Client Appreciation</span>
+        <span class="exp__micro">A memorable way to say thank you.</span>
+      </div>
+    </article>
+
+    <!-- Golf Tournaments · no dedicated page yet → intentional non-clickable -->
+    <article class="exp exp--quiet">
+      <div class="exp__media"><img src="images/charity-golf-cigar-experience.webp" alt="An attendant beside a mobile cigar cart with its humidor open as golfers gather on a sunlit course" width="1536" height="1024" loading="lazy" style="object-position:50% 50%"></div>
+      <div class="exp__body">
+        <span class="exp__label">Golf Tournaments</span>
+        <span class="exp__micro">The unexpected stop everyone talks about afterward.</span>
+      </div>
+    </article>
+
+    <!-- Private Celebrations · no dedicated page yet → intentional non-clickable -->
+    <article class="exp exp--quiet">
+      <div class="exp__media"><img src="images/private-celebration-experience.webp" alt="Well-dressed guests relax with drinks on outdoor sofas at a sunlit private estate celebration, a Mediterranean villa and garden behind them" width="1447" height="1087" loading="lazy" style="object-position:50% 50%"></div>
+      <div class="exp__body">
+        <span class="exp__label">Private Celebrations</span>
+        <span class="exp__micro">Because the best celebrations deserve something no one saw coming.</span>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -1367,31 +1472,31 @@ a { color: inherit; text-decoration: none; }
     <div class="process__step reveal">
       <div class="process__step-num">i</div>
       <h3 class="process__step-title">The Conversation</h3>
-      <p class="process__step-desc">It begins with your event. The occasion, the guests, the setting, the feeling you want the evening to leave behind.</p>
+      <p class="process__step-desc">We start by learning what you're planning and how you want the experience to fit into it.</p>
     </div>
 
     <div class="process__step reveal">
       <div class="process__step-num">ii</div>
       <h3 class="process__step-title">The Selection</h3>
-      <p class="process__step-desc">Together we choose a collection suited to your guests and your occasion. One for every guest, always.</p>
+      <p class="process__step-desc">Together we choose the cigars best suited to your guests and the occasion. One for every guest, always.</p>
     </div>
 
     <div class="process__step reveal">
       <div class="process__step-num">iii</div>
       <h3 class="process__step-title">The Evening</h3>
-      <p class="process__step-desc">Guests are welcomed, presented, attended. Cut and light, question and conversation. Service that moves with the celebration.</p>
+      <p class="process__step-desc">On the night, our ambassador tends the experience and makes guests feel at ease, helping them choose, cut, light, and enjoy their cigar.</p>
     </div>
 
     <div class="process__step reveal">
       <div class="process__step-num">iv</div>
-      <h3 class="process__step-title">The Encore</h3>
-      <p class="process__step-desc">For guests who wish to linger a little longer, further selections are always at hand throughout the evening.</p>
+      <h3 class="process__step-title">The Story</h3>
+      <p class="process__step-desc">It becomes the part of the evening guests remember and talk about long after the event is over.</p>
     </div>
 
   </div>
 
   <div class="process__feature reveal">
-    <img src="images/SimplySexyCigars-264.jpg" alt="Guests mingle at an elegant evening event hosted with Simply Sexy Cigars luxury cigar service" loading="lazy">
+    <img src="images/SimplySexyCigars-264.jpg" alt="Simply Sexy Cigars attended cigar experience cart at an outdoor event" loading="lazy">
   </div>
 </section>
 
@@ -1408,119 +1513,34 @@ a { color: inherit; text-decoration: none; }
         <div class="why__numeral">i</div>
         <div>
           <h3 class="why__title">One for every guest.</h3>
-          <p class="why__desc">Every engagement begins with a simple promise: each of your guests receives a hand-selected cigar of their own. Not a favor. A gesture.</p>
+          <p class="why__desc">Every guest is offered a cigar chosen for the occasion and presented personally, making the experience feel welcoming from the very first moment.</p>
         </div>
       </div>
 
       <div class="why__item reveal">
         <div class="why__numeral">ii</div>
         <div>
-          <h3 class="why__title">Presented, never served.</h3>
-          <p class="why__desc">Our Simply Sexy Cigars Brand Ambassadors are hosts in the oldest sense of the word. Warm, knowledgeable, unhurried. The kind of presence guests remember without quite knowing why.</p>
+          <h3 class="why__title">No experience required.</h3>
+          <p class="why__desc">Our ambassador stays with the experience, helping guests choose, cut, light, and enjoy their cigar so first-timers feel just as comfortable as regular cigar smokers.</p>
         </div>
       </div>
 
       <div class="why__item reveal">
         <div class="why__numeral">iii</div>
         <div>
-          <h3 class="why__title">The traveling humidor.</h3>
-          <p class="why__desc">Our signature cart carries a curated humidor wherever the celebration goes. A vineyard terrace, a dealership floor, the eighteenth green. The collection arrives in perfect condition, every time.</p>
+          <h3 class="why__title">Something to gather around.</h3>
+          <p class="why__desc">It becomes the place guests naturally drift toward, drawing people together without taking attention away from the event itself.</p>
         </div>
       </div>
 
       <div class="why__item reveal">
         <div class="why__numeral">iv</div>
         <div>
-          <h3 class="why__title">Planned like a private dinner.</h3>
-          <p class="why__desc">Every event is arranged in conversation with you, from first inquiry to final farewell. Concierge planning, quietly handled, so the only thing you notice is how well the evening went.</p>
+          <h3 class="why__title">Handled from start to finish.</h3>
+          <p class="why__desc">We bring the experience to your venue and handle the details from the first planning conversation through setup and breakdown, so the host can simply enjoy the event.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 3C · MEMBERSHIP · COMING SOON ============ -->
-<section class="membership" id="membership">
-  <div class="membership__frame reveal">
-    <div class="eyebrow membership__eyebrow">Private Membership</div>
-    <h2 class="membership__title">The next chapter is invitation only.</h2>
-    <p class="membership__body">
-      A future Simply Sexy Cigars membership experience is being designed for guests who want more than a single evening. Private access, curated cigar moments, member-only experiences, and elevated gatherings are coming soon.
-    </p>
-    <span class="membership__badge">Coming Soon</span>
-  </div>
-</section>
-
-<!-- ============ 4 · GALLERY ============ -->
-<section class="gallery" id="gallery">
-  <div class="gallery__header">
-    <div>
-      <div class="eyebrow reveal">The Chapters</div>
-      <h2 class="display display--l reveal" style="margin-top:1rem;">Stories from <em>the evenings.</em></h2>
-    </div>
-    <div class="gallery__hint reveal">Drag or swipe to explore</div>
-  </div>
-
-  <div class="gallery__scroller" id="gallery-scroller" role="region" aria-label="Gallery of Simply Sexy Cigars events" tabindex="0">
-
-    <div class="gallery__item gallery__item--wide reveal">
-      <div class="ph">
-        <img src="images/checkmate.PNG" alt="Two guests share a game of chess and a cigar on a private estate terrace overlooking Northern California wine country" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Private Estates</span>
-      <div class="gallery__caption"><span>Wine Country</span><em>After Checkmate</em></div>
-    </div>
-
-    <div class="gallery__item gallery__item--wide reveal">
-      <div class="ph">
-        <img src="images/gift_box_2.png" alt="Simply Sexy Cigars black and gold gift box with custom personalized cigar bands for a wedding celebration" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Weddings</span>
-      <div class="gallery__caption"><span>Napa Valley</span><em>Custom Cigar Presentation</em></div>
-    </div>
-
-
-    <div class="gallery__item gallery__item--tall reveal">
-      <div class="ph">
-        <img src="images/cartier_hand.png" alt="A guest selects a premium cigar from the illuminated humidor of the Simply Sexy Cigars cart at a golf event" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Golf</span>
-      <div class="gallery__caption"><span>Silverado</span><em>Selections at the Turn</em></div>
-    </div>
-
-    <div class="gallery__item gallery__item--tall reveal">
-      <div class="ph">
-        <img src="images/Rolex_and_menu.png" alt="A guest reviews the Simply Sexy Cigars menu at a branded table during a corporate appreciation event" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Corporate Events</span>
-      <div class="gallery__caption"><span>San Francisco</span><em>Client Appreciation</em></div>
-    </div>
-
-
-    <div class="gallery__item gallery__item--tall reveal">
-      <div class="ph">
-        <img src="images/Birken_purse.png" alt="A glass of white wine beside a guest handbag at an outdoor wine country wedding reception" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Weddings</span>
-      <div class="gallery__caption"><span>Sonoma</span><em>Wine Country</em></div>
-    </div>
-
-    <div class="gallery__item gallery__item--tall reveal">
-      <div class="ph">
-        <img src="images/white_wine_pour.png" alt="White wine poured for a guest during a gala cocktail hour" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Country Clubs</span>
-      <div class="gallery__caption"><span>Marin</span><em>Gala Cocktail Hour</em></div>
-    </div>
-
-    <div class="gallery__item gallery__item--tall reveal">
-      <div class="ph">
-        <img src="images/burbon_and_alchohol.png" alt="Premium spirits arranged for pairing as a guest enjoys a cigar at an evening celebration" loading="lazy">
-      </div>
-      <span class="gallery__chapter">Private Estates</span>
-      <div class="gallery__caption"><span>East Bay</span><em>An Anniversary at Dusk</em></div>
-    </div>
-
   </div>
 </section>
 
@@ -1528,49 +1548,34 @@ a { color: inherit; text-decoration: none; }
 <section class="journal" id="journal">
   <div class="journal__inner">
     <div class="journal__header">
-      <div class="eyebrow reveal">The Journal</div>
+      <div class="eyebrow reveal">For Hosts &amp; Planners</div>
       <h2 class="display display--l reveal">The <em>Journal.</em></h2>
       <p class="journal__intro reveal">
-        Our editorial home — a growing collection of seasonal issues and evergreen stories on the art of the unhurried evening.
+        Ideas and guides for creating weddings, client events, and celebrations guests will actually talk about.
       </p>
       <a href="journal.html" class="journal__enter reveal" aria-label="Enter The Journal">Enter The Journal <span>→</span></a>
     </div>
 
     <div class="journal__grid">
 
-      <a href="autumn.html" class="journal__card journal__card--link journal__card--feature reveal" aria-label="Enter the Autumn Edition">
-        <div class="journal__category">The Autumn Edition · Seasonal</div>
-        <h3 class="journal__title">Autumn — A Season of Gathering</h3>
+      <a href="why-cigar-lounge-wedding.html" class="journal__card journal__card--link journal__card--feature reveal" aria-label="Read the feature: Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding">
+        <div class="journal__category">Weddings · Planning</div>
+        <h3 class="journal__title">Why a Cigar Lounge Becomes the Most Memorable Part of a Wedding</h3>
         <p class="journal__preview">
-          When the light turns amber and the evenings draw in, the year asks us to gather — and to linger. Our inaugural seasonal issue.
-        </p>
-        <div class="journal__cta">Enter the Edition <span>→</span></div>
-      </a>
-
-      <a href="art-of-the-cigar-moment.html" class="journal__card journal__card--link journal__card--feature reveal" aria-label="Read the feature: The Art of the Cigar Moment">
-        <div class="journal__category">Evergreen · The Ritual</div>
-        <h3 class="journal__title">The Art of the Cigar Moment</h3>
-        <p class="journal__preview">
-          Luxury is rarely remembered by what was purchased. It is remembered by the conversations that lingered, and the feeling that, for a little while, time slowed down.
+          Why a thoughtfully hosted cigar lounge can become the place guests gather, slow down, and talk about long after the reception ends.
         </p>
         <div class="journal__cta">Read the Feature <span>→</span></div>
       </a>
 
-    </div>
-  </div>
-</section>
+      <a href="client-appreciation-guide.html" class="journal__card journal__card--link journal__card--feature reveal" aria-label="Read the guide: Beyond the Gift Basket, A Host's Guide to Client Appreciation">
+        <div class="journal__category">Corporate · Client Appreciation</div>
+        <h3 class="journal__title">Beyond the Gift Basket: A Host's Guide to Client Appreciation</h3>
+        <p class="journal__preview">
+          How to move beyond the expected gift and create a client appreciation event that feels personal, social, and worth talking about afterward.
+        </p>
+        <div class="journal__cta">Read the Guide <span>→</span></div>
+      </a>
 
-<!-- ============ 7 · TESTIMONIAL ============ -->
-<section class="testimonial">
-  <div class="testimonial__inner">
-    <div class="pullquote testimonial__quote reveal" id="testimonial-quote">
-      Our guests are still talking about the experience months later.
-    </div>
-    <div class="testimonial__attribution reveal" id="testimonial-attr">
-      <span><strong>Private Client</strong> · Danville</span>
-    </div>
-    <div class="testimonial__dots reveal" id="testimonial-dots">
-      <span class="is-active"></span><span></span><span></span><span></span><span></span><span></span>
     </div>
   </div>
 </section>
@@ -1578,10 +1583,10 @@ a { color: inherit; text-decoration: none; }
 <!-- ============ 6 · BOOKING ============ -->
 <section class="reserve" id="booking">
   <div class="reserve__frame reveal">
-    <div class="eyebrow reserve__eyebrow">Book Your Event</div>
-    <h2 class="reserve__title">Let's create an unforgettable experience.</h2>
+    <div class="eyebrow reserve__eyebrow">Start a Conversation</div>
+    <h2 class="reserve__title">Tell us about your event.</h2>
     <p class="reserve__body">
-      Tell us about your event, guest count, venue, and preferred date. We'll personally learn about your event, recommend the cigar package that best fits your guests and budget, and create a Simply Sexy Cigars experience your guests will remember long after the celebration ends.
+      Share a few details and we'll follow up personally to talk through your event and what would suit your guests. This is the start of a conversation, not a commitment.
     </p>
 
     <form class="booking-form" name="ssc-booking" method="POST">
@@ -1606,13 +1611,10 @@ a { color: inherit; text-decoration: none; }
           <select id="bf-type" name="event_type" required>
             <option value="">Select One</option>
             <option>Wedding</option>
-            <option>Corporate Event</option>
-            <option>Private Celebration</option>
-            <option>Luxury Automotive Event</option>
+            <option>Charitable Event</option>
+            <option>Corporate &amp; Client Appreciation</option>
             <option>Golf Tournament</option>
-            <option>Winery / Vineyard Event</option>
-            <option>Country Club Event</option>
-            <option>Charity Gala</option>
+            <option>Private Celebration</option>
             <option>Other</option>
           </select>
         </div>
@@ -1643,35 +1645,27 @@ a { color: inherit; text-decoration: none; }
         </div>
       </div>
 
-      <fieldset class="booking-form__connect">
-        <legend>Stay Connected</legend>
-        <label class="booking-form__check">
-          <input type="checkbox" name="journal_opt_in">
-          <span class="booking-form__check-box" aria-hidden="true"></span>
-          <span class="booking-form__check-text">I would like to receive Simply Sexy Cigars Journal stories, pairing guides, and editorial content.</span>
-        </label>
-        <label class="booking-form__check">
-          <input type="checkbox" name="email_marketing_opt_in">
-          <span class="booking-form__check-box" aria-hidden="true"></span>
-          <span class="booking-form__check-text">I would like to receive exclusive event invitations, seasonal offerings, and special announcements by email.</span>
-        </label>
-        <label class="booking-form__check">
-          <input type="checkbox" name="sms_marketing_opt_in">
-          <span class="booking-form__check-box" aria-hidden="true"></span>
-          <span class="booking-form__check-text">I would like to receive occasional text messages about my inquiry, upcoming events, and exclusive experiences.</span>
-        </label>
-      </fieldset>
+      <!-- Anti-spam (invisible to people): a honeypot field bots tend to fill, plus a
+           form-render timestamp set by JS. Both are validated server-side and never
+           stored, emailed, or sent to analytics. Not focusable, not announced. -->
+      <div class="booking-form__hp" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+        <label for="bf-website">Company website (leave this field blank)</label>
+        <input type="text" id="bf-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="form_ts" id="bf-form-ts">
 
       <p class="booking-form__error" id="bf-error" role="alert" hidden></p>
 
-      <button type="submit" class="booking-form__submit" id="bf-submit">Submit Inquiry</button>
+      <button type="submit" class="booking-form__submit" id="bf-submit">Start the Conversation</button>
     </form>
+
+    <p class="reserve__aside reserve__contact-alt">Prefer email? Reach us at <a href="mailto:lola@simplysexycigars.com">lola@simplysexycigars.com</a>. We read every inquiry personally and will be in touch.</p>
 
     <div class="booking-success" id="bf-success" hidden>
       <div class="booking-success__rule" aria-hidden="true"></div>
       <p class="booking-success__lead">Your inquiry has been received.</p>
-      <p class="booking-success__body">Lola will personally review your event details and be in touch shortly.</p>
-      <p class="booking-success__number">Inquiry <span id="bf-number"></span></p>
+      <p class="booking-success__body">Lola will personally review the details and be in touch shortly.</p>
+      <p class="booking-success__number">Your inquiry number is <span id="bf-number"></span></p>
       <p class="booking-success__aside">A confirmation has been sent to your email.</p>
     </div>
 
@@ -1686,24 +1680,12 @@ a { color: inherit; text-decoration: none; }
   <div class="footer__inner">
     <div class="footer__brand">
       <img src="images/Simply_Sexy_Cigars_Logo.png" alt="Simply Sexy Cigars logo" class="footer__logo" loading="lazy" decoding="async">
-      <p class="footer__tagline">Luxury experiences, elevated by Simply Sexy Cigars. Proudly serving Northern California, from San Francisco and Silicon Valley to Napa, Sonoma, Sacramento, and Chico.</p>
+      <p class="footer__tagline">In the business of celebration. Proudly serving Northern California, from San Francisco and Silicon Valley to Napa, Sonoma, Sacramento, and Chico.</p>
       <div class="footer__social">
         <h3>Follow the Experience</h3>
         <div class="footer__social-links">
           <a href="https://www.instagram.com/simplysexycigars/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M14.5 8.5 H17 V5 h-2.5 C12.6 5 11 6.6 11 8.5 V11 H8.5 v3.5 H11 V21 h3.5 v-6.5 H17 L17.5 11 h-3 V8.9 c0-.3.2-.4.5-.4z" stroke-width="1.1"/></svg>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-            <svg viewBox="0 0 24 24"><path d="M15 4 c.3 2.4 1.9 4 4.3 4.2 V11 c-1.6 0-3-.5-4.3-1.4 v5.9 c0 3-2.4 5.5-5.5 5.5 -3 0-5.5-2.5-5.5-5.5 0-3 2.4-5.5 5.5-5.5 .3 0 .7 0 1 .1 v3.1 c-.3-.1-.6-.2-1-.2 -1.4 0-2.5 1.1-2.5 2.5 s1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5 V4 z" stroke-width="1.1"/></svg>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="3.5"/><path d="M10.5 9.5 L15 12.5 L10.5 15.5 z"/></svg>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><line x1="8" y1="10.5" x2="8" y2="16.5"/><circle cx="8" cy="7.8" r="0.6" fill="currentColor" stroke="none"/><path d="M11.5 16.5 v-4 c0-1.2 1-2 2.2-2 s2.3.8 2.3 2 v4"/></svg>
           </a>
         </div>
       </div>
@@ -1713,17 +1695,16 @@ a { color: inherit; text-decoration: none; }
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#process">How It Works</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#booking">Book Your Event</a></li>
       </ul>
     </div>
     <div class="footer__col">
       <h3>We Serve</h3>
       <ul>
-        <li>Weddings & Private Celebrations</li>
-        <li>Corporate & Executive Events</li>
-        <li>Luxury Automotive & Brand</li>
-        <li>Golf, Country Clubs & Galas</li>
+        <li>Weddings</li>
+        <li>Charitable Events</li>
+        <li>Corporate &amp; Client Appreciation</li>
+        <li>Golf Tournaments</li>
+        <li>Private Celebrations</li>
       </ul>
     </div>
     <div class="footer__col">
@@ -1731,14 +1712,14 @@ a { color: inherit; text-decoration: none; }
       <ul>
         <li><a href="mailto:lola@simplysexycigars.com">lola@simplysexycigars.com</a></li>
         <li>Serving Northern California</li>
-        <li><a href="#booking">Request an Event Proposal</a></li>
+        <li><a href="#booking">Start a Conversation</a></li>
       </ul>
     </div>
   </div>
   <div class="footer__bar">
     <span>© MMXXVI · Simply Sexy Cigars</span>
+    <span class="footer__legal"><a href="privacy.html" style="color:var(--paper)">Privacy</a> · <a href="terms.html" style="color:var(--paper)">Terms</a></span>
     <span><em>Experience first. Cigars always.</em></span>
-    <span>Privacy · Terms</span>
   </div>
 </footer>
 
@@ -1755,6 +1736,12 @@ const bkSubmit = document.getElementById('bf-submit');
 const bkError = document.getElementById('bf-error');
 const bkSuccess = document.getElementById('bf-success');
 const bkNumber = document.getElementById('bf-number');
+let leadTracked = false; // ensures one confirmed inquiry fires one GA4 generate_lead
+
+/* Anti-spam: stamp when the form became available. Read + validated server-side,
+   never stored/emailed/sent to analytics. Guarded so it can never break the form. */
+const bkFormTs = document.getElementById('bf-form-ts');
+if (bkFormTs) bkFormTs.value = String(Date.now());
 
 bkForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -1762,9 +1749,6 @@ bkForm.addEventListener('submit', async (e) => {
 
   const fd = new FormData(bkForm);
   const payload = Object.fromEntries(fd.entries());
-  ['journal_opt_in', 'email_marketing_opt_in', 'sms_marketing_opt_in'].forEach(k => {
-    payload[k] = fd.get(k) === 'on';
-  });
 
   bkSubmit.disabled = true;
   const originalLabel = bkSubmit.textContent;
@@ -1779,6 +1763,19 @@ bkForm.addEventListener('submit', async (e) => {
     const result = await res.json().catch(() => ({}));
 
     if (res.ok && result.ok) {
+      /* GA4 lead conversion — fires ONLY after /api/inquiry confirms success.
+         Non-PII only: a fixed method plus the predefined event-type category
+         (a <select> value, never free text). Fully guarded and wrapped so that
+         analytics can never break or alter the inquiry outcome. */
+      if (!leadTracked && typeof gtag === 'function') {
+        leadTracked = true;
+        try {
+          const params = { method: 'website_inquiry' };
+          const et = bkForm.querySelector('#bf-type');
+          if (et && et.value) params.event_type = et.value;
+          gtag('event', 'generate_lead', params);
+        } catch (gaErr) { /* analytics must never affect the inquiry outcome */ }
+      }
       bkNumber.textContent = result.inquiryNumber || '';
       bkForm.hidden = true;
       bkSuccess.hidden = false;
@@ -1820,82 +1817,39 @@ const io = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal, .reveal-word').forEach(el => io.observe(el));
 
-/* Testimonial rotation */
-const quotes = [
-  {
-    text: 'Our guests are still talking about the experience months later.',
-    attr: '<span><strong>Private Client</strong> · Danville</span>'
-  },
-  {
-    text: 'It became one of the highlights of our client appreciation event.',
-    attr: '<span><strong>Senior Vice President</strong> · Fortune 500 Technology Company</span>'
-  },
-  {
-    text: 'They elevated the atmosphere without ever taking attention away from the celebration.',
-    attr: '<span><strong>Wedding Planner</strong> · Napa Valley</span>'
-  },
-  {
-    text: 'Our guests felt genuinely cared for from beginning to end.',
-    attr: '<span><strong>Director of Events</strong> · Private Country Club</span>'
-  },
-  {
-    text: 'The conversations continued long after dinner ended. That was the whole point.',
-    attr: '<span><strong>CEO</strong> · Private Equity Firm</span>'
-  },
-  {
-    text: 'Our clients now ask if Simply Sexy Cigars will be at every appreciation event.',
-    attr: '<span><strong>General Manager</strong> · Luxury Automotive Dealership</span>'
-  }
-];
-let idx = 0;
-const qEl = document.getElementById('testimonial-quote');
-const aEl = document.getElementById('testimonial-attr');
-const dots = document.querySelectorAll('#testimonial-dots span');
-setInterval(() => {
-  idx = (idx + 1) % quotes.length;
-  qEl.style.opacity = '0';
-  aEl.style.opacity = '0';
-  setTimeout(() => {
-    qEl.textContent = quotes[idx].text;
-    aEl.innerHTML = quotes[idx].attr;
-    qEl.style.transition = 'opacity 1s ease';
-    aEl.style.transition = 'opacity 1s ease';
-    qEl.style.opacity = '1';
-    aEl.style.opacity = '1';
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-  }, 700);
-}, 7000);
-
-/* Gallery: click-and-drag scroll */
+/* Gallery: click-and-drag scroll (dormant — the Gallery section was removed from the
+   active homepage; this guard prevents a null error if the scroller is absent). */
 const scroller = document.getElementById('gallery-scroller');
-let isDown = false, startX = 0, startScrollLeft = 0, moved = 0;
-scroller.addEventListener('mousedown', (e) => {
-  isDown = true;
-  moved = 0;
-  scroller.classList.add('is-dragging');
-  startX = e.pageX - scroller.offsetLeft;
-  startScrollLeft = scroller.scrollLeft;
-});
-scroller.addEventListener('mouseleave', () => {
-  isDown = false;
-  scroller.classList.remove('is-dragging');
-});
-scroller.addEventListener('mouseup', () => {
-  isDown = false;
-  scroller.classList.remove('is-dragging');
-});
-scroller.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - scroller.offsetLeft;
-  const walk = (x - startX) * 1.4;
-  moved = Math.abs(walk);
-  scroller.scrollLeft = startScrollLeft - walk;
-});
-/* Suppress click after drag */
-scroller.addEventListener('click', (e) => {
-  if (moved > 5) { e.preventDefault(); e.stopPropagation(); }
-}, true);
+if (scroller) {
+  let isDown = false, startX = 0, startScrollLeft = 0, moved = 0;
+  scroller.addEventListener('mousedown', (e) => {
+    isDown = true;
+    moved = 0;
+    scroller.classList.add('is-dragging');
+    startX = e.pageX - scroller.offsetLeft;
+    startScrollLeft = scroller.scrollLeft;
+  });
+  scroller.addEventListener('mouseleave', () => {
+    isDown = false;
+    scroller.classList.remove('is-dragging');
+  });
+  scroller.addEventListener('mouseup', () => {
+    isDown = false;
+    scroller.classList.remove('is-dragging');
+  });
+  scroller.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scroller.offsetLeft;
+    const walk = (x - startX) * 1.4;
+    moved = Math.abs(walk);
+    scroller.scrollLeft = startScrollLeft - walk;
+  });
+  /* Suppress click after drag */
+  scroller.addEventListener('click', (e) => {
+    if (moved > 5) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+}
 </script>
 
 </body>

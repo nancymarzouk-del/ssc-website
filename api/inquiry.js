@@ -295,6 +295,22 @@ export default async function handler(req, res) {
 
     const body = typeof req.body === 'object' && req.body !== null ? req.body : {};
 
+    // --- anti-spam gate (runs BEFORE inquiry-number, Supabase insert, and Resend) ---
+    // Honeypot: a field hidden from real visitors that bots tend to fill.
+    // Timing: a form-render timestamp set client-side; an implausibly fast submission
+    // is almost certainly automated. Both are read only here and are never added to
+    // `data`, so they are never stored in Supabase, emailed, or sent to analytics.
+    // Missing/invalid timing is treated leniently (not blocked on its own).
+    const MIN_FILL_MS = 2000;
+    const honeypot = clean(body.website, 200);
+    const formTs = parseInt(body.form_ts, 10);
+    const elapsedMs = Number.isFinite(formTs) && formTs > 0 ? (Date.now() - formTs) : null;
+    const tooFast = elapsedMs !== null && elapsedMs >= 0 && elapsedMs < MIN_FILL_MS;
+    if (honeypot || tooFast) {
+      console.warn('Inquiry rejected by anti-spam validation');
+      return res.status(400).json({ ok: false, error: 'We could not send your inquiry just now. Please try again, or email us directly.' });
+    }
+
     // --- validate + sanitize ---
     const data = {
       name: clean(body.name),
