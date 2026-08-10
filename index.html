@@ -10,6 +10,9 @@
   gtag('js', new Date());
   gtag('config', 'G-C1J9E4RVWH');
 </script>
+<!-- Cloudflare Turnstile (invisible bot mitigation for the inquiry form). Loaded async;
+     the token it issues is validated server-side via Siteverify. No visible widget. -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=sscTurnstileInit&render=explicit" async defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
@@ -1654,6 +1657,9 @@ a.exp:focus-visible { outline: 2px solid var(--champagne); outline-offset: 4px; 
         <input type="text" id="bf-website" name="website" tabindex="-1" autocomplete="off">
       </div>
       <input type="hidden" name="form_ts" id="bf-form-ts">
+      <!-- Cloudflare Turnstile (invisible) — renders no visible UI; the token it issues
+           is submitted and validated server-side. Not focusable, not announced. -->
+      <div id="bf-turnstile" aria-hidden="true"></div>
 
       <p class="booking-form__error" id="bf-error" role="alert" hidden></p>
 
@@ -1744,16 +1750,63 @@ let leadTracked = false; // ensures one confirmed inquiry fires one GA4 generate
 const bkFormTs = document.getElementById('bf-form-ts');
 if (bkFormTs) bkFormTs.value = String(Date.now());
 
+/* Cloudflare Turnstile (invisible). The site key is PUBLIC. Held/local QA uses
+   Cloudflare's official TEST site key (always issues a passing token); replace it with
+   the production site key at setup. The token is only ever trusted after server-side
+   Siteverify — a browser token alone is never sufficient. */
+const SSC_TURNSTILE_SITEKEY = '0x4AAAAAAELqQuE0GznTZyvo'; /* production Turnstile site key (public) */
+let tsWidgetId = null;
+let tsTokenResolver = null;
+window.sscTurnstileInit = function () {
+  try {
+    tsWidgetId = window.turnstile.render('#bf-turnstile', {
+      sitekey: SSC_TURNSTILE_SITEKEY,
+      appearance: 'interaction-only', /* no visible widget unless a challenge is required */
+      retry: 'never',
+      callback: (token) => { const r = tsTokenResolver; tsTokenResolver = null; if (r) r(token || null); },
+      'error-callback': () => { const r = tsTokenResolver; tsTokenResolver = null; if (r) r(null); },
+    });
+  } catch (e) { tsWidgetId = null; }
+};
+/* Obtain a fresh, single-use token for one submission. Resolves to a token string, or
+   null if Turnstile is unavailable (script blocked/failed) or times out — the caller
+   then stops the submission and offers the email fallback (never hangs, never bypasses). */
+function sscGetTurnstileToken() {
+  return new Promise((resolve) => {
+    if (!window.turnstile || tsWidgetId === null) { resolve(null); return; }
+    let settled = false, timer = null;
+    const finish = (v) => { if (settled) return; settled = true; if (timer) clearTimeout(timer); tsTokenResolver = null; resolve(v); };
+    tsTokenResolver = finish;
+    timer = setTimeout(() => finish(null), 6000);
+    try { window.turnstile.reset(tsWidgetId); window.turnstile.execute(tsWidgetId); }
+    catch (e) { finish(null); }
+  });
+}
+
 bkForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   bkError.hidden = true;
 
-  const fd = new FormData(bkForm);
-  const payload = Object.fromEntries(fd.entries());
-
+  // Disable immediately to prevent duplicate submits while we verify and send.
   bkSubmit.disabled = true;
   const originalLabel = bkSubmit.textContent;
   bkSubmit.textContent = 'Sending\u2026';
+
+  // Security: obtain a fresh, single-use Turnstile token. If Turnstile is unavailable
+  // (script blocked or failed to load), stop and offer the email fallback rather than
+  // submitting unverified or hanging. The server independently fails closed.
+  const tsToken = await sscGetTurnstileToken();
+  if (!tsToken) {
+    bkError.textContent = 'We could not verify your browser just now. Please try again, or email lola@simplysexycigars.com directly.';
+    bkError.hidden = false;
+    bkSubmit.disabled = false;
+    bkSubmit.textContent = originalLabel;
+    return;
+  }
+
+  const fd = new FormData(bkForm);
+  const payload = Object.fromEntries(fd.entries());
+  payload['cf-turnstile-response'] = tsToken;
 
   try {
     const res = await fetch('/api/inquiry', {

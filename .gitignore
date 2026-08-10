@@ -1,6 +1,7 @@
 .DS_Store
 **/.DS_Store
 .vercel
+node_modules/
 
 # Private business strategy — never committed to the website repo or
 # deployed, so it can never become publicly accessible. Versioned

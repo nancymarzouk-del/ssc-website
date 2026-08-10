@@ -3,6 +3,7 @@
 // POST /api/inquiry
 // Saves to Supabase, emails the concierge team + the customer via Resend.
 
+import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
@@ -277,6 +278,113 @@ function missingEnvVars() {
   });
 }
 
+// ---------- abuse prevention: Cloudflare Turnstile + Upstash rate limiting ----------
+
+// Customer-safe generic rejection — never reveals which defensive layer fired.
+const GENERIC_REJECT = 'We could not send your inquiry just now. Please try again, or email us directly.';
+
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+// Production hostnames a Turnstile token must be issued for. Cloudflare TEST keys and
+// local/held QA report a non-production hostname; those are allowed only for testing.
+const ALLOWED_TURNSTILE_HOSTS = new Set([
+  'www.simplysexycigars.com',
+  'simplysexycigars.com',
+]);
+
+// Vercel sets VERCEL_ENV to 'production' only on the production deployment ('preview'
+// and 'development' otherwise). Test/local hostnames are accepted ONLY when this is
+// false; in production, hostname validation is strict (the two canonical hosts only).
+const IS_PRODUCTION = process.env.VERCEL_ENV === 'production';
+
+// Deliberately conservative thresholds. Named constants so they can be changed
+// intentionally later without touching logic.
+const RL_PER_CLIENT = { limit: 5, windowSec: 600 };   // 5 attempts / 10 min per hashed client
+const RL_GLOBAL = { limit: 100, windowSec: 3600 };    // 100 attempts / hour site-wide (circuit breaker)
+
+// Server-side Turnstile verification via Cloudflare Siteverify. Fails CLOSED:
+// any missing/invalid/expired/reused token, unexpected hostname, unavailable
+// Siteverify, or unconfigured secret returns ok:false. The customer's IP is NOT
+// sent to Cloudflare (remoteip omitted) to minimise personal-data transmission.
+async function verifyTurnstile(token) {
+  const secret = (process.env.TURNSTILE_SECRET_KEY || '').trim();
+  if (!secret) return { ok: false, reason: 'not-configured' };
+  if (!token || typeof token !== 'string' || token.length > 4096) return { ok: false, reason: 'missing-token' };
+  let json;
+  try {
+    const form = new URLSearchParams();
+    form.set('secret', secret);
+    form.set('response', token);
+    const resp = await fetch(TURNSTILE_VERIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: form,
+    });
+    json = await resp.json();
+  } catch (e) {
+    return { ok: false, reason: 'verify-unavailable' }; // fail closed on Cloudflare outage
+  }
+  if (!json || json.success !== true) return { ok: false, reason: 'rejected' };
+  const host = typeof json.hostname === 'string' ? json.hostname.toLowerCase() : '';
+  if (ALLOWED_TURNSTILE_HOSTS.has(host)) return { ok: true };
+  // Test/local hostnames pass ONLY outside production. Production accepts neither
+  // localhost/127.0.0.1/empty/example.com/Cloudflare-test hosts nor arbitrary preview
+  // hostnames — only the two canonical production hosts above.
+  if (!IS_PRODUCTION && (host === '' || host === 'localhost' || host === '127.0.0.1' || host === 'example.com')) {
+    return { ok: true };
+  }
+  return { ok: false, reason: 'bad-hostname' };
+}
+
+// Originating client IP from Vercel's trusted platform header ONLY. A general
+// x-forwarded-for is client-spoofable and is not trusted; when the trusted header is
+// absent we return null and skip only the per-client limiter (the global circuit
+// breaker still applies). The value is a single canonical IPv4 or IPv6 address with no
+// port, used verbatim (lower-cased) so IPv6 casing cannot fork a client's identity.
+function clientIp(req) {
+  const h = (req && req.headers) || {};
+  const raw = h['x-vercel-forwarded-for'] || '';
+  const first = String(raw).split(',')[0].trim().toLowerCase();
+  return first || null;
+}
+
+// Opaque, non-reversible rate-limit identifier: salted HMAC-SHA256 of the IP so that
+// IP ranges are not enumerable and the raw IP is never persisted anywhere. Returns
+// null when the IP or the server-only salt is unavailable (then only the global
+// limiter applies).
+function clientRateId(ip) {
+  const salt = (process.env.RATE_LIMIT_HASH_SECRET || '').trim();
+  if (!ip || !salt) return null;
+  return crypto.createHmac('sha256', salt).update(ip).digest('hex');
+}
+
+// Lazily construct Upstash limiters. Returns null when unconfigured or the SDK/redis
+// is unavailable, which the caller treats as fail-open (Turnstile + honeypot + timing
+// still enforced). Cached across warm invocations.
+let _limiters;
+async function getLimiters() {
+  if (_limiters !== undefined) return _limiters;
+  const url = (process.env.UPSTASH_REDIS_REST_URL || '').trim();
+  const tok = (process.env.UPSTASH_REDIS_REST_TOKEN || '').trim();
+  if (!url || !tok) { _limiters = null; return _limiters; }
+  try {
+    const [{ Redis }, { Ratelimit }] = await Promise.all([
+      import('@upstash/redis'),
+      import('@upstash/ratelimit'),
+    ]);
+    const redis = new Redis({ url, token: tok });
+    _limiters = {
+      perClient: new Ratelimit({ redis, prefix: 'ssc:inq:c', analytics: false,
+        limiter: Ratelimit.slidingWindow(RL_PER_CLIENT.limit, `${RL_PER_CLIENT.windowSec} s`) }),
+      global: new Ratelimit({ redis, prefix: 'ssc:inq:g', analytics: false,
+        limiter: Ratelimit.slidingWindow(RL_GLOBAL.limit, `${RL_GLOBAL.windowSec} s`) }),
+    };
+  } catch (e) {
+    _limiters = null; // fail-open on SDK/import failure
+  }
+  return _limiters;
+}
+
 // ---------- handler ----------
 
 export default async function handler(req, res) {
@@ -308,7 +416,48 @@ export default async function handler(req, res) {
     const tooFast = elapsedMs !== null && elapsedMs >= 0 && elapsedMs < MIN_FILL_MS;
     if (honeypot || tooFast) {
       console.warn('Inquiry rejected by anti-spam validation');
-      return res.status(400).json({ ok: false, error: 'We could not send your inquiry just now. Please try again, or email us directly.' });
+      return res.status(400).json({ ok: false, error: GENERIC_REJECT });
+    }
+
+    // --- Cloudflare Turnstile (server-side Siteverify; fails CLOSED) ---
+    // The token (body['cf-turnstile-response']) is read only here and never added to
+    // `data`, so it is never stored in Supabase, emailed, or sent to analytics.
+    const tsResult = await verifyTurnstile(body['cf-turnstile-response']);
+    if (!tsResult.ok) {
+      console.warn('Inquiry rejected: turnstile', tsResult.reason);
+      return res.status(400).json({ ok: false, error: GENERIC_REJECT });
+    }
+
+    // --- persistent rate limiting: per-client + global circuit breaker ---
+    // Runs before any Supabase/Resend work. Fail-open on Upstash unavailability so a
+    // Turnstile-verified request is not blocked by a security-provider outage; honeypot,
+    // timing, and Turnstile remain in force, so abuse protection is never fully removed.
+    // The raw IP is HMAC-hashed; only the opaque hash is used as the Upstash key.
+    try {
+      const limiters = await getLimiters();
+      if (limiters) {
+        const rid = clientRateId(clientIp(req));
+        if (rid) {
+          const perClient = await limiters.perClient.limit(rid);
+          if (!perClient.success) {
+            console.warn('Inquiry rejected: per-client rate limit');
+            res.setHeader('Retry-After', String(Math.max(1, Math.ceil((perClient.reset - Date.now()) / 1000))));
+            return res.status(429).json({ ok: false, error: GENERIC_REJECT });
+          }
+        } else {
+          console.warn('Rate limit: no client identifier; relying on global limiter only');
+        }
+        const globalLimit = await limiters.global.limit('all');
+        if (!globalLimit.success) {
+          console.warn('Inquiry rejected: global circuit breaker');
+          res.setHeader('Retry-After', String(Math.max(1, Math.ceil((globalLimit.reset - Date.now()) / 1000))));
+          return res.status(429).json({ ok: false, error: GENERIC_REJECT });
+        }
+      } else {
+        console.warn('Rate limiter unconfigured/unavailable; proceeding (Turnstile + honeypot + timing enforced)');
+      }
+    } catch (e) {
+      console.warn('Rate limiter error; proceeding (Turnstile + honeypot + timing enforced)');
     }
 
     // --- validate + sanitize ---
