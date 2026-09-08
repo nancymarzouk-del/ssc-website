@@ -53,6 +53,18 @@
    two-card related grid and the closing CTA block. Nothing global is redefined. */
 .a-related__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,2.5vw,1.75rem)}
 @media (max-width:680px){.a-related__grid{grid-template-columns:1fr}}
+/* Responsive image fix (page-scoped): the golf photos carry intrinsic
+   width/height attributes (1536x1024). The shared .a-media-full / .a-hero rules
+   set width + aspect-ratio but not height, so the intrinsic height attribute was
+   forcing a fixed pixel height and squeezing the 3:2 photos into tall crops on
+   mobile. Releasing height and pinning the true 3:2 ratio restores natural,
+   fluid, non-distorted scaling at every width. */
+.a-media-full img{aspect-ratio:3/2;height:auto;max-width:100%}
+/* Hero: show the full 3:2 image at its natural ratio (both ambassadors, the sign,
+   and the logo stay fully in frame at every width) rather than cover-cropping into
+   a tall viewport-height frame, which cut the subjects and left a gap on mobile. */
+.a-hero{min-height:0}
+.a-hero__img{height:auto;aspect-ratio:3/2}
 .ca-close{max-width:var(--wide);margin:clamp(3rem,6vw,5rem) auto 0;padding:0 var(--gutter);text-align:center}
 .ca-close p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.5;color:var(--paper);max-width:34ch;margin:0 auto clamp(1.75rem,3vw,2.25rem)}
 </style>
