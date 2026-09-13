@@ -944,6 +944,12 @@ a { color: inherit; text-decoration: none; }
   font-size: 15px; line-height: 1.8; color: var(--paper);
   max-width: 50ch; margin: 0 auto 3rem;
 }
+/* Service-aware booking context — a subtle confirmation line shown only when a
+   valid ?event= parameter is present (set by JS). Hidden by default. */
+.booking-context {
+  font-family: var(--serif); font-style: italic; font-size: 15px;
+  color: var(--champagne); max-width: 52ch; margin: -1.75rem auto 2.5rem;
+}
 .reserve__cta {
   display: inline-flex; align-items: center; gap: 1.25rem;
   padding: 1.25rem 2.5rem;
@@ -1637,6 +1643,8 @@ a.exp:focus-visible { outline: 2px solid var(--champagne); outline-offset: 4px; 
       Share a few details and we'll follow up personally to talk through your event and what would suit your guests. This is the start of a conversation, not a commitment.
     </p>
 
+    <p class="booking-context" id="booking-context" hidden></p>
+
     <form class="booking-form" name="ssc-booking" method="POST">
       <div class="booking-form__row">
         <div class="booking-form__field">
@@ -1950,6 +1958,44 @@ if (scroller) {
     if (moved > 5) { e.preventDefault(); e.stopPropagation(); }
   }, true);
 }
+</script>
+
+<!-- Service-aware booking: preselect Type of Event + show a confirmation line
+     when a valid ?event= parameter is present. Whitelisted values only; no-ops
+     (form behaves normally) if the parameter is missing or invalid. -->
+<script>
+(function () {
+  var OPTION = {
+    wedding:    'Wedding',
+    golf:       'Golf Tournament',
+    corporate:  'Corporate & Client Appreciation',
+    private:    'Private Celebration',
+    charitable: 'Charitable Event'
+  };
+  var MESSAGE = {
+    wedding:    "You're inquiring about our Wedding Cigar Lounge experience.",
+    golf:       "You're inquiring about our Golf Tournament Cigar Experience.",
+    corporate:  "You're inquiring about our Corporate & Client Appreciation Cigar Experience.",
+    private:    "You're inquiring about our Private Celebration Cigar Experience.",
+    charitable: "You're inquiring about our Charitable Event Cigar Experience."
+  };
+  try {
+    var ev = new URLSearchParams(window.location.search).get('event');
+    if (!ev || !Object.prototype.hasOwnProperty.call(OPTION, ev)) return;
+    var target = OPTION[ev];
+    var sel = document.getElementById('bf-type');
+    if (sel) {
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === target || sel.options[i].text === target) {
+          sel.selectedIndex = i;
+          break;
+        }
+      }
+    }
+    var ctx = document.getElementById('booking-context');
+    if (ctx) { ctx.textContent = MESSAGE[ev]; ctx.hidden = false; }
+  } catch (e) { /* graceful degradation — form remains at its default */ }
+})();
 </script>
 
 </body>
